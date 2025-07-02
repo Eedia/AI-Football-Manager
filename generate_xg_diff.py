@@ -33,8 +33,6 @@ def collect_cleaned_xg_sample():
     df.to_csv("epl_2024_xg_cleaned_sample.csv", index=False)
     return df
 
-import pandas as pd
-
 def add_xg_against_and_diff(csv_path="epl_2024_xg_cleaned_sample.csv"):
     # 1. 기존 xG 데이터 불러오기
     df = pd.read_csv(csv_path)
