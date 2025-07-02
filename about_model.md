@@ -55,10 +55,24 @@
   - `eval_metric='logloss'`
   - `use_label_encoder=False`
 
-#### 5. 모델 평가
-- 정확도: `accuracy_score`
-- 분류 리포트: `classification_report`
-- 혼동 행렬: `confusion_matrix`
+#### 5. 모델 평가 결과
+
+🎯 **Accuracy**: 0.7384615384615385
+
+📋 **Classification Report**:
+               precision    recall  f1-score   support
+
+           0       0.71      0.78      0.74        63
+           1       0.77      0.70      0.73        67
+
+    accuracy                           0.74       130
+   macro avg       0.74      0.74      0.74       130
+weighted avg       0.74      0.74      0.74       130
+
+
+🧱 **Confusion Matrix**:
+ [[49 14]
+ [20 47]]
 
 ---
 
