@@ -2,7 +2,7 @@ import pandas as pd
 from soccerdata import FotMob
 
 def collect_cleaned_xg_sample():
-    fm = FotMob(leagues=["ENG-Premier League"], seasons=["2024"])
+    fm = FotMob(leagues=["ENG-Premier League"], seasons=["2023-24"])
 
     # 1. xG 데이터 (MultiIndex DataFrame)
     df_xg = fm.read_team_match_stats(stat_type="Expected goals (xG)", opponent_stats=True)
@@ -33,7 +33,7 @@ def collect_cleaned_xg_sample():
     df.to_csv("epl_2024_xg_cleaned_sample.csv", index=False)
     return df
 
-def add_xg_against_and_diff(csv_path="epl_2024_xg_cleaned_sample.csv"):
+def add_xg_against_and_diff(csv_path="epl_2023_xg_cleaned_sample.csv"):
     # 1. 기존 xG 데이터 불러오기
     df = pd.read_csv(csv_path)
 
@@ -51,7 +51,7 @@ def add_xg_against_and_diff(csv_path="epl_2024_xg_cleaned_sample.csv"):
     df_merged['xG_diff'] = df_merged['xG_for'] - df_merged['xG_against']
 
     # 5. 저장 및 출력
-    df_merged.to_csv("epl_2024_xg_with_diff.csv", index=False)
+    df_merged.to_csv("epl_2023_xg_with_diff.csv", index=False)
     print(df_merged.head(10))
 
     return df_merged
