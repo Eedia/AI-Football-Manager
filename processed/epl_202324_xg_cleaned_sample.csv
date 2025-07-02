@@ -1,0 +1,761 @@
+date,team,opponent,venue,xG_for
+2023-08-11,Burnley,Manchester City,home,0.33
+2023-08-11,Manchester City,Burnley,away,2.08
+2023-08-12,AFC Bournemouth,West Ham United,home,1.37
+2023-08-12,West Ham United,AFC Bournemouth,away,1.07
+2023-08-12,Arsenal,Nottingham Forest,home,0.83
+2023-08-12,Nottingham Forest,Arsenal,away,1.18
+2023-08-12,Brighton & Hove Albion,Luton Town,home,4.01
+2023-08-12,Luton Town,Brighton & Hove Albion,away,1.48
+2023-08-12,Everton,Fulham,home,2.73
+2023-08-12,Fulham,Everton,away,1.50
+2023-08-12,Aston Villa,Newcastle United,away,1.77
+2023-08-12,Newcastle United,Aston Villa,home,3.41
+2023-08-12,Crystal Palace,Sheffield United,away,1.89
+2023-08-12,Sheffield United,Crystal Palace,home,0.51
+2023-08-13,Brentford,Tottenham Hotspur,home,2.22
+2023-08-13,Tottenham Hotspur,Brentford,away,1.27
+2023-08-13,Chelsea,Liverpool,home,1.35
+2023-08-13,Liverpool,Chelsea,away,1.28
+2023-08-14,Manchester United,Wolverhampton Wanderers,home,2.21
+2023-08-14,Wolverhampton Wanderers,Manchester United,away,2.35
+2023-08-18,Nottingham Forest,Sheffield United,home,1.39
+2023-08-18,Sheffield United,Nottingham Forest,away,0.50
+2023-08-19,Brentford,Fulham,away,3.93
+2023-08-19,Fulham,Brentford,home,0.46
+2023-08-19,AFC Bournemouth,Liverpool,away,1.29
+2023-08-19,Liverpool,AFC Bournemouth,home,3.08
+2023-08-19,Manchester City,Newcastle United,home,1.01
+2023-08-19,Newcastle United,Manchester City,away,0.29
+2023-08-19,Manchester United,Tottenham Hotspur,away,2.07
+2023-08-19,Tottenham Hotspur,Manchester United,home,1.74
+2023-08-19,Brighton & Hove Albion,Wolverhampton Wanderers,away,2.22
+2023-08-19,Wolverhampton Wanderers,Brighton & Hove Albion,home,2.14
+2023-08-20,Aston Villa,Everton,home,3.00
+2023-08-20,Everton,Aston Villa,away,0.63
+2023-08-20,Chelsea,West Ham United,away,2.49
+2023-08-20,West Ham United,Chelsea,home,1.80
+2023-08-21,Arsenal,Crystal Palace,away,2.02
+2023-08-21,Crystal Palace,Arsenal,home,1.01
+2023-08-25,Chelsea,Luton Town,home,2.27
+2023-08-25,Luton Town,Chelsea,away,0.44
+2023-08-26,AFC Bournemouth,Tottenham Hotspur,home,0.67
+2023-08-26,Tottenham Hotspur,AFC Bournemouth,away,2.06
+2023-08-26,Arsenal,Fulham,home,3.20
+2023-08-26,Fulham,Arsenal,away,0.56
+2023-08-26,Brentford,Crystal Palace,home,0.97
+2023-08-26,Crystal Palace,Brentford,away,0.80
+2023-08-26,Brighton & Hove Albion,West Ham United,home,1.48
+2023-08-26,West Ham United,Brighton & Hove Albion,away,3.23
+2023-08-26,Everton,Wolverhampton Wanderers,home,1.34
+2023-08-26,Wolverhampton Wanderers,Everton,away,1.08
+2023-08-26,Manchester United,Nottingham Forest,home,2.83
+2023-08-26,Nottingham Forest,Manchester United,away,1.21
+2023-08-27,Aston Villa,Burnley,away,2.70
+2023-08-27,Burnley,Aston Villa,home,0.73
+2023-08-27,Liverpool,Newcastle United,away,0.88
+2023-08-27,Newcastle United,Liverpool,home,1.99
+2023-08-27,Manchester City,Sheffield United,away,3.60
+2023-08-27,Sheffield United,Manchester City,home,0.67
+2023-09-01,Luton Town,West Ham United,home,1.47
+2023-09-01,West Ham United,Luton Town,away,1.03
+2023-09-02,AFC Bournemouth,Brentford,away,2.09
+2023-09-02,Brentford,AFC Bournemouth,home,2.91
+2023-09-02,Brighton & Hove Albion,Newcastle United,home,1.30
+2023-09-02,Newcastle United,Brighton & Hove Albion,away,1.23
+2023-09-02,Burnley,Tottenham Hotspur,home,1.36
+2023-09-02,Tottenham Hotspur,Burnley,away,2.28
+2023-09-02,Chelsea,Nottingham Forest,home,2.30
+2023-09-02,Nottingham Forest,Chelsea,away,0.76
+2023-09-02,Fulham,Manchester City,away,1.45
+2023-09-02,Manchester City,Fulham,home,2.26
+2023-09-02,Everton,Sheffield United,away,2.59
+2023-09-02,Sheffield United,Everton,home,1.19
+2023-09-03,Arsenal,Manchester United,home,2.27
+2023-09-03,Manchester United,Arsenal,away,0.94
+2023-09-03,Crystal Palace,Wolverhampton Wanderers,home,2.11
+2023-09-03,Wolverhampton Wanderers,Crystal Palace,away,1.18
+2023-09-03,Aston Villa,Liverpool,away,0.66
+2023-09-03,Liverpool,Aston Villa,home,2.47
+2023-09-16,Aston Villa,Crystal Palace,home,3.21
+2023-09-16,Crystal Palace,Aston Villa,away,1.17
+2023-09-16,Fulham,Luton Town,home,0.96
+2023-09-16,Luton Town,Fulham,away,1.10
+2023-09-16,Brighton & Hove Albion,Manchester United,away,1.70
+2023-09-16,Manchester United,Brighton & Hove Albion,home,0.96
+2023-09-16,Brentford,Newcastle United,away,0.50
+2023-09-16,Newcastle United,Brentford,home,1.44
+2023-09-16,Sheffield United,Tottenham Hotspur,away,0.66
+2023-09-16,Tottenham Hotspur,Sheffield United,home,2.12
+2023-09-16,Manchester City,West Ham United,away,3.63
+2023-09-16,West Ham United,Manchester City,home,0.94
+2023-09-16,Liverpool,Wolverhampton Wanderers,away,2.52
+2023-09-16,Wolverhampton Wanderers,Liverpool,home,0.63
+2023-09-17,AFC Bournemouth,Chelsea,home,1.04
+2023-09-17,Chelsea,AFC Bournemouth,away,1.85
+2023-09-17,Arsenal,Everton,away,1.02
+2023-09-17,Everton,Arsenal,home,0.34
+2023-09-18,Burnley,Nottingham Forest,away,0.55
+2023-09-18,Nottingham Forest,Burnley,home,0.71
+2023-09-23,Brentford,Everton,home,1.03
+2023-09-23,Everton,Brentford,away,1.90
+2023-09-23,Burnley,Manchester United,home,1.09
+2023-09-23,Manchester United,Burnley,away,0.97
+2023-09-23,Crystal Palace,Fulham,home,0.30
+2023-09-23,Fulham,Crystal Palace,away,0.59
+2023-09-23,Luton Town,Wolverhampton Wanderers,home,2.17
+2023-09-23,Wolverhampton Wanderers,Luton Town,away,0.59
+2023-09-23,Manchester City,Nottingham Forest,home,1.33
+2023-09-23,Nottingham Forest,Manchester City,away,1.03
+2023-09-24,Arsenal,Tottenham Hotspur,home,2.03
+2023-09-24,Tottenham Hotspur,Arsenal,away,1.46
+2023-09-24,AFC Bournemouth,Brighton & Hove Albion,away,1.14
+2023-09-24,Brighton & Hove Albion,AFC Bournemouth,home,1.85
+2023-09-24,Aston Villa,Chelsea,away,1.07
+2023-09-24,Chelsea,Aston Villa,home,1.33
+2023-09-24,Liverpool,West Ham United,home,3.03
+2023-09-24,West Ham United,Liverpool,away,1.10
+2023-09-24,Newcastle United,Sheffield United,away,3.92
+2023-09-24,Sheffield United,Newcastle United,home,0.94
+2023-09-30,AFC Bournemouth,Arsenal,home,0.64
+2023-09-30,Arsenal,AFC Bournemouth,away,3.43
+2023-09-30,Aston Villa,Brighton & Hove Albion,home,1.58
+2023-09-30,Brighton & Hove Albion,Aston Villa,away,1.71
+2023-09-30,Everton,Luton Town,home,2.90
+2023-09-30,Luton Town,Everton,away,0.89
+2023-09-30,Crystal Palace,Manchester United,away,0.90
+2023-09-30,Manchester United,Crystal Palace,home,1.30
+2023-09-30,Burnley,Newcastle United,away,0.65
+2023-09-30,Newcastle United,Burnley,home,3.18
+2023-09-30,Liverpool,Tottenham Hotspur,away,1.31
+2023-09-30,Tottenham Hotspur,Liverpool,home,2.23
+2023-09-30,Sheffield United,West Ham United,away,1.07
+2023-09-30,West Ham United,Sheffield United,home,2.14
+2023-09-30,Manchester City,Wolverhampton Wanderers,away,0.87
+2023-09-30,Wolverhampton Wanderers,Manchester City,home,0.47
+2023-10-01,Brentford,Nottingham Forest,away,1.66
+2023-10-01,Nottingham Forest,Brentford,home,0.46
+2023-10-02,Chelsea,Fulham,away,1.70
+2023-10-02,Fulham,Chelsea,home,1.09
+2023-10-03,Burnley,Luton Town,away,1.11
+2023-10-03,Luton Town,Burnley,home,1.34
+2023-10-07,Burnley,Chelsea,home,0.75
+2023-10-07,Chelsea,Burnley,away,1.86
+2023-10-07,Crystal Palace,Nottingham Forest,home,0.81
+2023-10-07,Nottingham Forest,Crystal Palace,away,1.05
+2023-10-07,AFC Bournemouth,Everton,away,0.69
+2023-10-07,Everton,AFC Bournemouth,home,2.49
+2023-10-07,Fulham,Sheffield United,home,2.21
+2023-10-07,Sheffield United,Fulham,away,0.57
+2023-10-07,Luton Town,Tottenham Hotspur,home,0.76
+2023-10-07,Tottenham Hotspur,Luton Town,away,1.96
+2023-10-07,Brentford,Manchester United,away,0.95
+2023-10-07,Manchester United,Brentford,home,1.43
+2023-10-08,Arsenal,Manchester City,home,0.39
+2023-10-08,Manchester City,Arsenal,away,0.48
+2023-10-08,Brighton & Hove Albion,Liverpool,home,2.32
+2023-10-08,Liverpool,Brighton & Hove Albion,away,2.35
+2023-10-08,Newcastle United,West Ham United,away,2.01
+2023-10-08,West Ham United,Newcastle United,home,1.16
+2023-10-08,Aston Villa,Wolverhampton Wanderers,away,1.61
+2023-10-08,Wolverhampton Wanderers,Aston Villa,home,1.68
+2023-10-21,AFC Bournemouth,Wolverhampton Wanderers,home,0.63
+2023-10-21,Wolverhampton Wanderers,AFC Bournemouth,away,2.35
+2023-10-21,Brentford,Burnley,home,3.24
+2023-10-21,Burnley,Brentford,away,1.14
+2023-10-21,Arsenal,Chelsea,away,0.99
+2023-10-21,Chelsea,Arsenal,home,1.35
+2023-10-21,Everton,Liverpool,away,0.13
+2023-10-21,Liverpool,Everton,home,2.23
+2023-10-21,Brighton & Hove Albion,Manchester City,away,0.83
+2023-10-21,Manchester City,Brighton & Hove Albion,home,0.75
+2023-10-21,Crystal Palace,Newcastle United,away,1.21
+2023-10-21,Newcastle United,Crystal Palace,home,2.39
+2023-10-21,Luton Town,Nottingham Forest,away,1.71
+2023-10-21,Nottingham Forest,Luton Town,home,2.97
+2023-10-21,Manchester United,Sheffield United,away,1.10
+2023-10-21,Sheffield United,Manchester United,home,1.42
+2023-10-22,Aston Villa,West Ham United,home,1.94
+2023-10-22,West Ham United,Aston Villa,away,1.16
+2023-10-23,Fulham,Tottenham Hotspur,away,1.03
+2023-10-23,Tottenham Hotspur,Fulham,home,1.53
+2023-10-27,Crystal Palace,Tottenham Hotspur,home,0.61
+2023-10-27,Tottenham Hotspur,Crystal Palace,away,1.12
+2023-10-28,AFC Bournemouth,Burnley,home,1.11
+2023-10-28,Burnley,AFC Bournemouth,away,0.83
+2023-10-28,Arsenal,Sheffield United,home,2.77
+2023-10-28,Sheffield United,Arsenal,away,0.03
+2023-10-28,Brentford,Chelsea,away,2.16
+2023-10-28,Chelsea,Brentford,home,2.03
+2023-10-28,Newcastle United,Wolverhampton Wanderers,away,2.19
+2023-10-28,Wolverhampton Wanderers,Newcastle United,home,0.89
+2023-10-29,Aston Villa,Luton Town,home,2.28
+2023-10-29,Luton Town,Aston Villa,away,0.48
+2023-10-29,Brighton & Hove Albion,Fulham,home,1.43
+2023-10-29,Fulham,Brighton & Hove Albion,away,0.71
+2023-10-29,Liverpool,Nottingham Forest,home,3.19
+2023-10-29,Nottingham Forest,Liverpool,away,0.45
+2023-10-29,Manchester City,Manchester United,away,4.00
+2023-10-29,Manchester United,Manchester City,home,0.95
+2023-10-29,Everton,West Ham United,away,0.82
+2023-10-29,West Ham United,Everton,home,0.66
+2023-11-04,Brentford,West Ham United,home,1.63
+2023-11-04,West Ham United,Brentford,away,1.82
+2023-11-04,Burnley,Crystal Palace,home,1.12
+2023-11-04,Crystal Palace,Burnley,away,1.30
+2023-11-04,Brighton & Hove Albion,Everton,away,0.51
+2023-11-04,Everton,Brighton & Hove Albion,home,0.71
+2023-11-04,Fulham,Manchester United,home,1.01
+2023-11-04,Manchester United,Fulham,away,0.69
+2023-11-04,AFC Bournemouth,Manchester City,away,0.91
+2023-11-04,Manchester City,AFC Bournemouth,home,1.95
+2023-11-04,Arsenal,Newcastle United,away,0.57
+2023-11-04,Newcastle United,Arsenal,home,1.04
+2023-11-04,Sheffield United,Wolverhampton Wanderers,home,1.05
+2023-11-04,Wolverhampton Wanderers,Sheffield United,away,1.33
+2023-11-05,Liverpool,Luton Town,away,2.85
+2023-11-05,Luton Town,Liverpool,home,0.81
+2023-11-05,Aston Villa,Nottingham Forest,away,1.23
+2023-11-05,Nottingham Forest,Aston Villa,home,0.38
+2023-11-06,Chelsea,Tottenham Hotspur,away,4.12
+2023-11-06,Tottenham Hotspur,Chelsea,home,0.89
+2023-11-11,AFC Bournemouth,Newcastle United,home,2.46
+2023-11-11,Newcastle United,AFC Bournemouth,away,0.49
+2023-11-11,Arsenal,Burnley,home,1.95
+2023-11-11,Burnley,Arsenal,away,0.32
+2023-11-11,Crystal Palace,Everton,home,2.17
+2023-11-11,Everton,Crystal Palace,away,1.53
+2023-11-11,Luton Town,Manchester United,away,0.41
+2023-11-11,Manchester United,Luton Town,home,2.18
+2023-11-11,Tottenham Hotspur,Wolverhampton Wanderers,away,0.70
+2023-11-11,Wolverhampton Wanderers,Tottenham Hotspur,home,2.15
+2023-11-12,Aston Villa,Fulham,home,3.08
+2023-11-12,Fulham,Aston Villa,away,0.93
+2023-11-12,Brighton & Hove Albion,Sheffield United,home,1.53
+2023-11-12,Sheffield United,Brighton & Hove Albion,away,1.07
+2023-11-12,Chelsea,Manchester City,home,2.95
+2023-11-12,Manchester City,Chelsea,away,2.88
+2023-11-12,Brentford,Liverpool,away,1.68
+2023-11-12,Liverpool,Brentford,home,1.71
+2023-11-12,Nottingham Forest,West Ham United,away,1.69
+2023-11-12,West Ham United,Nottingham Forest,home,1.80
+2023-11-25,Arsenal,Brentford,away,1.65
+2023-11-25,Brentford,Arsenal,home,1.19
+2023-11-25,Burnley,West Ham United,home,1.26
+2023-11-25,West Ham United,Burnley,away,0.90
+2023-11-25,Crystal Palace,Luton Town,away,1.67
+2023-11-25,Luton Town,Crystal Palace,home,0.94
+2023-11-25,Liverpool,Manchester City,away,0.56
+2023-11-25,Manchester City,Liverpool,home,1.36
+2023-11-25,Chelsea,Newcastle United,away,0.53
+2023-11-25,Newcastle United,Chelsea,home,2.36
+2023-11-25,Brighton & Hove Albion,Nottingham Forest,away,1.48
+2023-11-25,Nottingham Forest,Brighton & Hove Albion,home,1.93
+2023-11-25,AFC Bournemouth,Sheffield United,away,2.86
+2023-11-25,Sheffield United,AFC Bournemouth,home,0.78
+2023-11-26,Everton,Manchester United,home,2.47
+2023-11-26,Manchester United,Everton,away,2.22
+2023-11-26,Aston Villa,Tottenham Hotspur,away,1.76
+2023-11-26,Tottenham Hotspur,Aston Villa,home,2.34
+2023-11-27,Fulham,Wolverhampton Wanderers,home,2.90
+2023-11-27,Wolverhampton Wanderers,Fulham,away,1.35
+2023-12-02,Arsenal,Wolverhampton Wanderers,home,2.89
+2023-12-02,Wolverhampton Wanderers,Arsenal,away,0.71
+2023-12-02,Brentford,Luton Town,home,3.47
+2023-12-02,Luton Town,Brentford,away,0.23
+2023-12-02,Burnley,Sheffield United,home,1.81
+2023-12-02,Sheffield United,Burnley,away,0.39
+2023-12-02,Manchester United,Newcastle United,away,0.48
+2023-12-02,Newcastle United,Manchester United,home,2.50
+2023-12-02,Everton,Nottingham Forest,away,0.67
+2023-12-02,Nottingham Forest,Everton,home,0.72
+2023-12-03,AFC Bournemouth,Aston Villa,home,2.02
+2023-12-03,Aston Villa,AFC Bournemouth,away,0.68
+2023-12-03,Brighton & Hove Albion,Chelsea,away,1.14
+2023-12-03,Chelsea,Brighton & Hove Albion,home,2.11
+2023-12-03,Fulham,Liverpool,away,1.21
+2023-12-03,Liverpool,Fulham,home,2.23
+2023-12-03,Manchester City,Tottenham Hotspur,home,2.57
+2023-12-03,Tottenham Hotspur,Manchester City,away,0.46
+2023-12-03,Crystal Palace,West Ham United,away,0.93
+2023-12-03,West Ham United,Crystal Palace,home,1.13
+2023-12-05,Arsenal,Luton Town,away,2.26
+2023-12-05,Luton Town,Arsenal,home,0.51
+2023-12-05,Burnley,Wolverhampton Wanderers,away,0.87
+2023-12-05,Wolverhampton Wanderers,Burnley,home,0.83
+2023-12-06,Aston Villa,Manchester City,home,2.38
+2023-12-06,Manchester City,Aston Villa,away,0.65
+2023-12-06,Brentford,Brighton & Hove Albion,away,1.52
+2023-12-06,Brighton & Hove Albion,Brentford,home,1.57
+2023-12-06,AFC Bournemouth,Crystal Palace,away,1.90
+2023-12-06,Crystal Palace,AFC Bournemouth,home,1.01
+2023-12-06,Fulham,Nottingham Forest,home,2.52
+2023-12-06,Nottingham Forest,Fulham,away,0.26
+2023-12-06,Chelsea,Manchester United,away,1.52
+2023-12-06,Manchester United,Chelsea,home,4.17
+2023-12-06,Liverpool,Sheffield United,away,1.69
+2023-12-06,Sheffield United,Liverpool,home,0.99
+2023-12-07,Everton,Newcastle United,home,3.36
+2023-12-07,Newcastle United,Everton,away,1.57
+2023-12-07,Tottenham Hotspur,West Ham United,home,1.79
+2023-12-07,West Ham United,Tottenham Hotspur,away,2.23
+2023-12-09,Arsenal,Aston Villa,away,1.40
+2023-12-09,Aston Villa,Arsenal,home,0.57
+2023-12-09,Brighton & Hove Albion,Burnley,home,2.78
+2023-12-09,Burnley,Brighton & Hove Albion,away,0.56
+2023-12-09,Crystal Palace,Liverpool,home,1.74
+2023-12-09,Liverpool,Crystal Palace,away,1.25
+2023-12-09,AFC Bournemouth,Manchester United,away,1.48
+2023-12-09,Manchester United,AFC Bournemouth,home,1.16
+2023-12-09,Brentford,Sheffield United,away,0.66
+2023-12-09,Sheffield United,Brentford,home,0.81
+2023-12-09,Nottingham Forest,Wolverhampton Wanderers,away,1.29
+2023-12-09,Wolverhampton Wanderers,Nottingham Forest,home,1.17
+2023-12-10,Chelsea,Everton,away,0.95
+2023-12-10,Everton,Chelsea,home,1.22
+2023-12-10,Fulham,West Ham United,home,2.37
+2023-12-10,West Ham United,Fulham,away,1.34
+2023-12-10,Luton Town,Manchester City,home,0.33
+2023-12-10,Manchester City,Luton Town,away,1.61
+2023-12-10,Newcastle United,Tottenham Hotspur,away,1.69
+2023-12-10,Tottenham Hotspur,Newcastle United,home,3.81
+2023-12-15,Nottingham Forest,Tottenham Hotspur,home,1.35
+2023-12-15,Tottenham Hotspur,Nottingham Forest,away,1.57
+2023-12-16,Burnley,Everton,home,0.71
+2023-12-16,Everton,Burnley,away,1.46
+2023-12-16,Chelsea,Sheffield United,home,3.05
+2023-12-16,Sheffield United,Chelsea,away,0.36
+2023-12-16,Crystal Palace,Manchester City,away,1.82
+2023-12-16,Manchester City,Crystal Palace,home,1.61
+2023-12-16,Fulham,Newcastle United,away,0.28
+2023-12-16,Newcastle United,Fulham,home,3.51
+2023-12-17,Arsenal,Brighton & Hove Albion,home,2.34
+2023-12-17,Brighton & Hove Albion,Arsenal,away,0.69
+2023-12-17,Aston Villa,Brentford,away,1.42
+2023-12-17,Brentford,Aston Villa,home,0.51
+2023-12-17,Liverpool,Manchester United,home,2.38
+2023-12-17,Manchester United,Liverpool,away,0.75
+2023-12-17,West Ham United,Wolverhampton Wanderers,home,1.13
+2023-12-17,Wolverhampton Wanderers,West Ham United,away,0.66
+2023-12-21,Brighton & Hove Albion,Crystal Palace,away,1.19
+2023-12-21,Crystal Palace,Brighton & Hove Albion,home,1.35
+2023-12-22,Aston Villa,Sheffield United,home,0.86
+2023-12-22,Sheffield United,Aston Villa,away,0.58
+2023-12-23,Burnley,Fulham,away,0.37
+2023-12-23,Fulham,Burnley,home,1.42
+2023-12-23,Arsenal,Liverpool,away,0.74
+2023-12-23,Liverpool,Arsenal,home,0.97
+2023-12-23,Luton Town,Newcastle United,home,1.49
+2023-12-23,Newcastle United,Luton Town,away,1.50
+2023-12-23,AFC Bournemouth,Nottingham Forest,away,1.61
+2023-12-23,Nottingham Forest,AFC Bournemouth,home,1.02
+2023-12-23,Everton,Tottenham Hotspur,away,1.78
+2023-12-23,Tottenham Hotspur,Everton,home,1.48
+2023-12-23,Manchester United,West Ham United,away,1.03
+2023-12-23,West Ham United,Manchester United,home,1.25
+2023-12-24,Chelsea,Wolverhampton Wanderers,away,2.06
+2023-12-24,Wolverhampton Wanderers,Chelsea,home,1.27
+2023-12-26,AFC Bournemouth,Fulham,home,1.82
+2023-12-26,Fulham,AFC Bournemouth,away,0.28
+2023-12-26,Burnley,Liverpool,home,0.81
+2023-12-26,Liverpool,Burnley,away,1.82
+2023-12-26,Aston Villa,Manchester United,away,1.66
+2023-12-26,Manchester United,Aston Villa,home,1.13
+2023-12-26,Newcastle United,Nottingham Forest,home,2.43
+2023-12-26,Nottingham Forest,Newcastle United,away,3.46
+2023-12-26,Luton Town,Sheffield United,away,0.63
+2023-12-26,Sheffield United,Luton Town,home,2.59
+2023-12-27,Brentford,Wolverhampton Wanderers,home,2.23
+2023-12-27,Wolverhampton Wanderers,Brentford,away,2.39
+2023-12-27,Chelsea,Crystal Palace,home,2.57
+2023-12-27,Crystal Palace,Chelsea,away,1.12
+2023-12-27,Everton,Manchester City,home,0.98
+2023-12-27,Manchester City,Everton,away,2.60
+2023-12-28,Arsenal,West Ham United,home,2.77
+2023-12-28,West Ham United,Arsenal,away,1.42
+2023-12-28,Brighton & Hove Albion,Tottenham Hotspur,home,3.58
+2023-12-28,Tottenham Hotspur,Brighton & Hove Albion,away,2.35
+2023-12-30,Aston Villa,Burnley,home,3.23
+2023-12-30,Burnley,Aston Villa,away,1.17
+2023-12-30,Brentford,Crystal Palace,away,1.39
+2023-12-30,Crystal Palace,Brentford,home,0.98
+2023-12-30,Chelsea,Luton Town,away,1.50
+2023-12-30,Luton Town,Chelsea,home,2.53
+2023-12-30,Manchester City,Sheffield United,home,2.21
+2023-12-30,Sheffield United,Manchester City,away,0.31
+2023-12-30,Manchester United,Nottingham Forest,away,0.76
+2023-12-30,Nottingham Forest,Manchester United,home,0.70
+2023-12-30,Everton,Wolverhampton Wanderers,away,0.46
+2023-12-30,Wolverhampton Wanderers,Everton,home,1.99
+2023-12-31,Arsenal,Fulham,away,1.64
+2023-12-31,Fulham,Arsenal,home,1.22
+2023-12-31,AFC Bournemouth,Tottenham Hotspur,away,1.68
+2023-12-31,Tottenham Hotspur,AFC Bournemouth,home,2.32
+2024-01-01,Liverpool,Newcastle United,home,7.11
+2024-01-01,Newcastle United,Liverpool,away,0.60
+2024-01-02,Brighton & Hove Albion,West Ham United,away,2.38
+2024-01-02,West Ham United,Brighton & Hove Albion,home,0.68
+2024-01-12,Burnley,Luton Town,home,1.10
+2024-01-12,Luton Town,Burnley,away,0.95
+2024-01-13,Chelsea,Fulham,home,2.19
+2024-01-13,Fulham,Chelsea,away,0.86
+2024-01-13,Manchester City,Newcastle United,away,3.00
+2024-01-13,Newcastle United,Manchester City,home,1.30
+2024-01-14,Aston Villa,Everton,away,1.26
+2024-01-14,Everton,Aston Villa,home,1.20
+2024-01-14,Manchester United,Tottenham Hotspur,home,0.75
+2024-01-14,Tottenham Hotspur,Manchester United,away,1.23
+2024-01-20,Arsenal,Crystal Palace,home,3.21
+2024-01-20,Crystal Palace,Arsenal,away,0.35
+2024-01-20,Brentford,Nottingham Forest,home,1.20
+2024-01-20,Nottingham Forest,Brentford,away,1.22
+2024-01-21,AFC Bournemouth,Liverpool,home,1.37
+2024-01-21,Liverpool,AFC Bournemouth,away,1.57
+2024-01-21,Sheffield United,West Ham United,home,2.51
+2024-01-21,West Ham United,Sheffield United,away,2.34
+2024-01-22,Brighton & Hove Albion,Wolverhampton Wanderers,home,1.05
+2024-01-22,Wolverhampton Wanderers,Brighton & Hove Albion,away,1.15
+2024-01-30,Aston Villa,Newcastle United,home,1.46
+2024-01-30,Newcastle United,Aston Villa,away,2.63
+2024-01-30,Crystal Palace,Sheffield United,home,1.15
+2024-01-30,Sheffield United,Crystal Palace,away,0.76
+2024-01-30,Everton,Fulham,away,2.14
+2024-01-30,Fulham,Everton,home,1.64
+2024-01-30,Brighton & Hove Albion,Luton Town,away,0.94
+2024-01-30,Luton Town,Brighton & Hove Albion,home,3.21
+2024-01-30,Arsenal,Nottingham Forest,away,1.17
+2024-01-30,Nottingham Forest,Arsenal,home,0.47
+2024-01-31,Chelsea,Liverpool,away,0.58
+2024-01-31,Liverpool,Chelsea,home,2.90
+2024-01-31,Burnley,Manchester City,away,1.44
+2024-01-31,Manchester City,Burnley,home,1.76
+2024-01-31,Brentford,Tottenham Hotspur,away,1.59
+2024-01-31,Tottenham Hotspur,Brentford,home,3.01
+2024-02-01,AFC Bournemouth,West Ham United,away,1.20
+2024-02-01,West Ham United,AFC Bournemouth,home,1.39
+2024-02-01,Manchester United,Wolverhampton Wanderers,away,3.34
+2024-02-01,Wolverhampton Wanderers,Manchester United,home,2.20
+2024-02-03,Brighton & Hove Albion,Crystal Palace,home,1.43
+2024-02-03,Crystal Palace,Brighton & Hove Albion,away,0.30
+2024-02-03,Burnley,Fulham,home,1.81
+2024-02-03,Fulham,Burnley,away,1.51
+2024-02-03,Everton,Tottenham Hotspur,home,2.62
+2024-02-03,Tottenham Hotspur,Everton,away,0.98
+2024-02-03,Luton Town,Newcastle United,away,2.36
+2024-02-03,Newcastle United,Luton Town,home,2.40
+2024-02-03,Aston Villa,Sheffield United,away,2.19
+2024-02-03,Sheffield United,Aston Villa,home,1.48
+2024-02-04,AFC Bournemouth,Nottingham Forest,home,1.27
+2024-02-04,Nottingham Forest,AFC Bournemouth,away,0.53
+2024-02-04,Arsenal,Liverpool,home,3.50
+2024-02-04,Liverpool,Arsenal,away,0.37
+2024-02-04,Chelsea,Wolverhampton Wanderers,home,1.74
+2024-02-04,Wolverhampton Wanderers,Chelsea,away,2.00
+2024-02-04,Manchester United,West Ham United,home,0.75
+2024-02-04,West Ham United,Manchester United,away,1.40
+2024-02-05,Brentford,Manchester City,home,1.04
+2024-02-05,Manchester City,Brentford,away,2.09
+2024-02-10,AFC Bournemouth,Fulham,away,1.84
+2024-02-10,Fulham,AFC Bournemouth,home,1.55
+2024-02-10,Burnley,Liverpool,away,1.33
+2024-02-10,Liverpool,Burnley,home,2.86
+2024-02-10,Luton Town,Sheffield United,home,1.88
+2024-02-10,Sheffield United,Luton Town,away,1.81
+2024-02-10,Everton,Manchester City,away,0.32
+2024-02-10,Manchester City,Everton,home,1.63
+2024-02-10,Newcastle United,Nottingham Forest,away,0.48
+2024-02-10,Nottingham Forest,Newcastle United,home,1.50
+2024-02-10,Brighton & Hove Albion,Tottenham Hotspur,away,1.24
+2024-02-10,Tottenham Hotspur,Brighton & Hove Albion,home,1.65
+2024-02-10,Brentford,Wolverhampton Wanderers,away,1.94
+2024-02-10,Wolverhampton Wanderers,Brentford,home,1.05
+2024-02-11,Aston Villa,Manchester United,home,2.43
+2024-02-11,Manchester United,Aston Villa,away,1.79
+2024-02-11,Arsenal,West Ham United,away,3.59
+2024-02-11,West Ham United,Arsenal,home,0.22
+2024-02-12,Chelsea,Crystal Palace,away,1.40
+2024-02-12,Crystal Palace,Chelsea,home,0.56
+2024-02-17,Brentford,Liverpool,home,1.69
+2024-02-17,Liverpool,Brentford,away,2.82
+2024-02-17,Arsenal,Burnley,away,2.36
+2024-02-17,Burnley,Arsenal,home,0.31
+2024-02-17,Aston Villa,Fulham,away,1.61
+2024-02-17,Fulham,Aston Villa,home,1.55
+2024-02-17,Chelsea,Manchester City,away,1.44
+2024-02-17,Manchester City,Chelsea,home,2.69
+2024-02-17,AFC Bournemouth,Newcastle United,away,2.22
+2024-02-17,Newcastle United,AFC Bournemouth,home,2.23
+2024-02-17,Nottingham Forest,West Ham United,home,2.82
+2024-02-17,West Ham United,Nottingham Forest,away,0.50
+2024-02-17,Tottenham Hotspur,Wolverhampton Wanderers,home,1.62
+2024-02-17,Wolverhampton Wanderers,Tottenham Hotspur,away,1.75
+2024-02-18,Luton Town,Manchester United,home,1.82
+2024-02-18,Manchester United,Luton Town,away,2.98
+2024-02-18,Brighton & Hove Albion,Sheffield United,away,2.90
+2024-02-18,Sheffield United,Brighton & Hove Albion,home,0.59
+2024-02-19,Crystal Palace,Everton,away,0.73
+2024-02-19,Everton,Crystal Palace,home,1.74
+2024-02-20,Brentford,Manchester City,away,0.35
+2024-02-20,Manchester City,Brentford,home,2.45
+2024-02-21,Liverpool,Luton Town,home,3.32
+2024-02-21,Luton Town,Liverpool,away,0.92
+2024-02-24,AFC Bournemouth,Manchester City,home,0.93
+2024-02-24,Manchester City,AFC Bournemouth,away,1.64
+2024-02-24,Arsenal,Newcastle United,home,2.86
+2024-02-24,Newcastle United,Arsenal,away,0.16
+2024-02-24,Aston Villa,Nottingham Forest,home,3.57
+2024-02-24,Nottingham Forest,Aston Villa,away,2.56
+2024-02-24,Brighton & Hove Albion,Everton,home,1.41
+2024-02-24,Everton,Brighton & Hove Albion,away,0.29
+2024-02-24,Burnley,Crystal Palace,away,0.08
+2024-02-24,Crystal Palace,Burnley,home,2.40
+2024-02-24,Fulham,Manchester United,away,1.20
+2024-02-24,Manchester United,Fulham,home,1.72
+2024-02-25,Sheffield United,Wolverhampton Wanderers,away,0.58
+2024-02-25,Wolverhampton Wanderers,Sheffield United,home,1.31
+2024-02-26,Brentford,West Ham United,away,0.91
+2024-02-26,West Ham United,Brentford,home,1.69
+2024-03-02,Brentford,Chelsea,home,1.83
+2024-03-02,Chelsea,Brentford,away,1.81
+2024-03-02,Everton,West Ham United,home,2.73
+2024-03-02,West Ham United,Everton,away,1.87
+2024-03-02,Brighton & Hove Albion,Fulham,away,1.34
+2024-03-02,Fulham,Brighton & Hove Albion,home,1.30
+2024-03-02,Aston Villa,Luton Town,away,1.95
+2024-03-02,Luton Town,Aston Villa,home,1.77
+2024-03-02,Newcastle United,Wolverhampton Wanderers,home,2.19
+2024-03-02,Wolverhampton Wanderers,Newcastle United,away,0.80
+2024-03-02,Liverpool,Nottingham Forest,away,2.07
+2024-03-02,Nottingham Forest,Liverpool,home,0.97
+2024-03-02,Crystal Palace,Tottenham Hotspur,away,0.32
+2024-03-02,Tottenham Hotspur,Crystal Palace,home,1.91
+2024-03-03,AFC Bournemouth,Burnley,away,1.12
+2024-03-03,Burnley,AFC Bournemouth,home,1.49
+2024-03-03,Manchester City,Manchester United,home,3.33
+2024-03-03,Manchester United,Manchester City,away,0.25
+2024-03-04,Arsenal,Sheffield United,away,2.31
+2024-03-04,Sheffield United,Arsenal,home,0.24
+2024-03-09,AFC Bournemouth,Sheffield United,home,3.35
+2024-03-09,Sheffield United,AFC Bournemouth,away,1.25
+2024-03-09,Arsenal,Brentford,home,1.28
+2024-03-09,Brentford,Arsenal,away,0.97
+2024-03-09,Crystal Palace,Luton Town,home,2.73
+2024-03-09,Luton Town,Crystal Palace,away,0.84
+2024-03-09,Everton,Manchester United,away,1.61
+2024-03-09,Manchester United,Everton,home,2.72
+2024-03-09,Fulham,Wolverhampton Wanderers,away,2.70
+2024-03-09,Wolverhampton Wanderers,Fulham,home,0.83
+2024-03-10,Aston Villa,Tottenham Hotspur,home,0.83
+2024-03-10,Tottenham Hotspur,Aston Villa,away,1.55
+2024-03-10,Brighton & Hove Albion,Nottingham Forest,home,0.43
+2024-03-10,Nottingham Forest,Brighton & Hove Albion,away,0.70
+2024-03-10,Liverpool,Manchester City,home,2.70
+2024-03-10,Manchester City,Liverpool,away,1.56
+2024-03-10,Burnley,West Ham United,away,0.68
+2024-03-10,West Ham United,Burnley,home,2.11
+2024-03-11,Chelsea,Newcastle United,home,1.57
+2024-03-11,Newcastle United,Chelsea,away,0.74
+2024-03-13,AFC Bournemouth,Luton Town,home,2.35
+2024-03-13,Luton Town,AFC Bournemouth,away,2.06
+2024-03-16,Brentford,Burnley,away,1.16
+2024-03-16,Burnley,Brentford,home,2.77
+2024-03-16,Fulham,Tottenham Hotspur,home,2.76
+2024-03-16,Tottenham Hotspur,Fulham,away,2.41
+2024-03-16,Luton Town,Nottingham Forest,home,0.58
+2024-03-16,Nottingham Forest,Luton Town,away,1.98
+2024-03-17,Aston Villa,West Ham United,away,0.66
+2024-03-17,West Ham United,Aston Villa,home,2.02
+2024-03-30,AFC Bournemouth,Everton,home,1.32
+2024-03-30,Everton,AFC Bournemouth,away,1.01
+2024-03-30,Aston Villa,Wolverhampton Wanderers,home,0.98
+2024-03-30,Wolverhampton Wanderers,Aston Villa,away,1.49
+2024-03-30,Brentford,Manchester United,home,3.29
+2024-03-30,Manchester United,Brentford,away,0.59
+2024-03-30,Burnley,Chelsea,away,1.64
+2024-03-30,Chelsea,Burnley,home,4.26
+2024-03-30,Newcastle United,West Ham United,home,4.07
+2024-03-30,West Ham United,Newcastle United,away,1.42
+2024-03-30,Crystal Palace,Nottingham Forest,away,1.19
+2024-03-30,Nottingham Forest,Crystal Palace,home,0.92
+2024-03-30,Fulham,Sheffield United,away,1.30
+2024-03-30,Sheffield United,Fulham,home,1.88
+2024-03-30,Luton Town,Tottenham Hotspur,away,0.52
+2024-03-30,Tottenham Hotspur,Luton Town,home,2.99
+2024-03-31,Brighton & Hove Albion,Liverpool,away,0.45
+2024-03-31,Liverpool,Brighton & Hove Albion,home,2.83
+2024-03-31,Arsenal,Manchester City,away,0.66
+2024-03-31,Manchester City,Arsenal,home,1.02
+2024-04-02,AFC Bournemouth,Crystal Palace,home,1.10
+2024-04-02,Crystal Palace,AFC Bournemouth,away,0.19
+2024-04-02,Burnley,Wolverhampton Wanderers,home,1.34
+2024-04-02,Wolverhampton Wanderers,Burnley,away,0.90
+2024-04-02,Everton,Newcastle United,away,1.44
+2024-04-02,Newcastle United,Everton,home,2.44
+2024-04-02,Fulham,Nottingham Forest,away,1.50
+2024-04-02,Nottingham Forest,Fulham,home,1.53
+2024-04-02,Tottenham Hotspur,West Ham United,away,0.96
+2024-04-02,West Ham United,Tottenham Hotspur,home,1.49
+2024-04-03,Arsenal,Luton Town,home,0.73
+2024-04-03,Luton Town,Arsenal,away,0.34
+2024-04-03,Brentford,Brighton & Hove Albion,home,0.57
+2024-04-03,Brighton & Hove Albion,Brentford,away,1.14
+2024-04-03,Aston Villa,Manchester City,away,0.77
+2024-04-03,Manchester City,Aston Villa,home,3.46
+2024-04-04,Chelsea,Manchester United,home,3.02
+2024-04-04,Manchester United,Chelsea,away,1.47
+2024-04-04,Liverpool,Sheffield United,home,1.83
+2024-04-04,Sheffield United,Liverpool,away,0.59
+2024-04-06,Aston Villa,Brentford,home,1.52
+2024-04-06,Brentford,Aston Villa,away,1.56
+2024-04-06,Arsenal,Brighton & Hove Albion,away,3.39
+2024-04-06,Brighton & Hove Albion,Arsenal,home,0.53
+2024-04-06,Crystal Palace,Manchester City,home,1.08
+2024-04-06,Manchester City,Crystal Palace,away,1.91
+2024-04-06,Burnley,Everton,away,0.46
+2024-04-06,Everton,Burnley,home,0.94
+2024-04-06,Fulham,Newcastle United,home,1.26
+2024-04-06,Newcastle United,Fulham,away,0.97
+2024-04-06,AFC Bournemouth,Luton Town,away,0.41
+2024-04-06,Luton Town,AFC Bournemouth,home,1.46
+2024-04-06,West Ham United,Wolverhampton Wanderers,away,1.16
+2024-04-06,Wolverhampton Wanderers,West Ham United,home,1.47
+2024-04-07,Liverpool,Manchester United,away,3.67
+2024-04-07,Manchester United,Liverpool,home,0.70
+2024-04-07,Chelsea,Sheffield United,away,0.35
+2024-04-07,Sheffield United,Chelsea,home,1.38
+2024-04-07,Nottingham Forest,Tottenham Hotspur,away,1.55
+2024-04-07,Tottenham Hotspur,Nottingham Forest,home,1.55
+2024-04-13,AFC Bournemouth,Manchester United,home,1.64
+2024-04-13,Manchester United,AFC Bournemouth,away,1.26
+2024-04-13,Brentford,Sheffield United,home,1.02
+2024-04-13,Sheffield United,Brentford,away,0.84
+2024-04-13,Brighton & Hove Albion,Burnley,away,0.86
+2024-04-13,Burnley,Brighton & Hove Albion,home,1.71
+2024-04-13,Luton Town,Manchester City,away,0.51
+2024-04-13,Manchester City,Luton Town,home,4.32
+2024-04-13,Newcastle United,Tottenham Hotspur,home,2.88
+2024-04-13,Tottenham Hotspur,Newcastle United,away,0.77
+2024-04-13,Nottingham Forest,Wolverhampton Wanderers,home,1.92
+2024-04-13,Wolverhampton Wanderers,Nottingham Forest,away,1.09
+2024-04-14,Arsenal,Aston Villa,home,1.64
+2024-04-14,Aston Villa,Arsenal,away,0.94
+2024-04-14,Crystal Palace,Liverpool,away,1.98
+2024-04-14,Liverpool,Crystal Palace,home,2.81
+2024-04-14,Fulham,West Ham United,away,3.29
+2024-04-14,West Ham United,Fulham,home,0.93
+2024-04-15,Chelsea,Everton,home,3.08
+2024-04-15,Everton,Chelsea,away,1.48
+2024-04-20,Brentford,Luton Town,away,3.14
+2024-04-20,Luton Town,Brentford,home,0.59
+2024-04-20,Burnley,Sheffield United,away,2.18
+2024-04-20,Sheffield United,Burnley,home,2.43
+2024-04-20,Arsenal,Wolverhampton Wanderers,away,1.18
+2024-04-20,Wolverhampton Wanderers,Arsenal,home,0.17
+2024-04-21,AFC Bournemouth,Aston Villa,away,1.77
+2024-04-21,Aston Villa,AFC Bournemouth,home,2.51
+2024-04-21,Crystal Palace,West Ham United,home,2.36
+2024-04-21,West Ham United,Crystal Palace,away,1.27
+2024-04-21,Everton,Nottingham Forest,home,0.34
+2024-04-21,Nottingham Forest,Everton,away,0.95
+2024-04-21,Fulham,Liverpool,home,0.80
+2024-04-21,Liverpool,Fulham,away,1.00
+2024-04-23,Arsenal,Chelsea,home,3.42
+2024-04-23,Chelsea,Arsenal,away,1.68
+2024-04-24,Crystal Palace,Newcastle United,home,0.89
+2024-04-24,Newcastle United,Crystal Palace,away,0.36
+2024-04-24,Everton,Liverpool,home,1.26
+2024-04-24,Liverpool,Everton,away,2.08
+2024-04-24,Manchester United,Sheffield United,home,2.94
+2024-04-24,Sheffield United,Manchester United,away,0.82
+2024-04-24,AFC Bournemouth,Wolverhampton Wanderers,away,1.96
+2024-04-24,Wolverhampton Wanderers,AFC Bournemouth,home,0.56
+2024-04-25,Brighton & Hove Albion,Manchester City,home,0.62
+2024-04-25,Manchester City,Brighton & Hove Albion,away,1.36
+2024-04-27,Aston Villa,Chelsea,home,1.10
+2024-04-27,Chelsea,Aston Villa,away,1.57
+2024-04-27,Brentford,Everton,away,0.88
+2024-04-27,Everton,Brentford,home,0.86
+2024-04-27,Crystal Palace,Fulham,away,1.01
+2024-04-27,Fulham,Crystal Palace,home,1.14
+2024-04-27,Burnley,Manchester United,away,2.06
+2024-04-27,Manchester United,Burnley,home,2.71
+2024-04-27,Newcastle United,Sheffield United,home,3.11
+2024-04-27,Sheffield United,Newcastle United,away,1.55
+2024-04-27,Liverpool,West Ham United,away,1.75
+2024-04-27,West Ham United,Liverpool,home,0.70
+2024-04-27,Luton Town,Wolverhampton Wanderers,away,0.59
+2024-04-27,Wolverhampton Wanderers,Luton Town,home,1.21
+2024-04-28,AFC Bournemouth,Brighton & Hove Albion,home,2.11
+2024-04-28,Brighton & Hove Albion,AFC Bournemouth,away,0.94
+2024-04-28,Manchester City,Nottingham Forest,away,0.87
+2024-04-28,Nottingham Forest,Manchester City,home,1.93
+2024-04-28,Arsenal,Tottenham Hotspur,away,1.03
+2024-04-28,Tottenham Hotspur,Arsenal,home,2.42
+2024-05-02,Chelsea,Tottenham Hotspur,home,2.17
+2024-05-02,Tottenham Hotspur,Chelsea,away,1.65
+2024-05-03,Everton,Luton Town,away,1.42
+2024-05-03,Luton Town,Everton,home,0.81
+2024-05-04,AFC Bournemouth,Arsenal,away,0.46
+2024-05-04,Arsenal,AFC Bournemouth,home,3.38
+2024-05-04,Brentford,Fulham,home,0.63
+2024-05-04,Fulham,Brentford,away,1.28
+2024-05-04,Burnley,Newcastle United,home,1.04
+2024-05-04,Newcastle United,Burnley,away,3.54
+2024-05-04,Manchester City,Wolverhampton Wanderers,home,3.74
+2024-05-04,Wolverhampton Wanderers,Manchester City,away,0.35
+2024-05-04,Nottingham Forest,Sheffield United,away,1.45
+2024-05-04,Sheffield United,Nottingham Forest,home,2.31
+2024-05-05,Aston Villa,Brighton & Hove Albion,away,0.05
+2024-05-05,Brighton & Hove Albion,Aston Villa,home,2.53
+2024-05-05,Chelsea,West Ham United,home,4.22
+2024-05-05,West Ham United,Chelsea,away,0.88
+2024-05-05,Liverpool,Tottenham Hotspur,home,3.37
+2024-05-05,Tottenham Hotspur,Liverpool,away,1.24
+2024-05-06,Crystal Palace,Manchester United,home,1.75
+2024-05-06,Manchester United,Crystal Palace,away,0.35
+2024-05-11,AFC Bournemouth,Brentford,home,0.67
+2024-05-11,Brentford,AFC Bournemouth,away,1.08
+2024-05-11,Everton,Sheffield United,home,2.35
+2024-05-11,Sheffield United,Everton,away,0.60
+2024-05-11,Fulham,Manchester City,home,0.12
+2024-05-11,Manchester City,Fulham,away,3.25
+2024-05-11,Brighton & Hove Albion,Newcastle United,away,1.37
+2024-05-11,Newcastle United,Brighton & Hove Albion,home,2.22
+2024-05-11,Chelsea,Nottingham Forest,away,1.62
+2024-05-11,Nottingham Forest,Chelsea,home,1.55
+2024-05-11,Burnley,Tottenham Hotspur,away,0.67
+2024-05-11,Tottenham Hotspur,Burnley,home,2.72
+2024-05-11,Luton Town,West Ham United,away,0.32
+2024-05-11,West Ham United,Luton Town,home,3.17
+2024-05-11,Crystal Palace,Wolverhampton Wanderers,away,2.70
+2024-05-11,Wolverhampton Wanderers,Crystal Palace,home,1.57
+2024-05-12,Arsenal,Manchester United,away,1.52
+2024-05-12,Manchester United,Arsenal,home,0.51
+2024-05-13,Aston Villa,Liverpool,home,3.17
+2024-05-13,Liverpool,Aston Villa,away,1.75
+2024-05-14,Manchester City,Tottenham Hotspur,away,2.40
+2024-05-14,Tottenham Hotspur,Manchester City,home,1.66
+2024-05-15,Brighton & Hove Albion,Chelsea,home,1.27
+2024-05-15,Chelsea,Brighton & Hove Albion,away,1.54
+2024-05-15,Manchester United,Newcastle United,home,1.48
+2024-05-15,Newcastle United,Manchester United,away,2.19
+2024-05-19,Arsenal,Everton,home,3.01
+2024-05-19,Everton,Arsenal,away,0.61
+2024-05-19,Brentford,Newcastle United,home,1.13
+2024-05-19,Newcastle United,Brentford,away,3.43
+2024-05-19,Brighton & Hove Albion,Manchester United,home,1.88
+2024-05-19,Manchester United,Brighton & Hove Albion,away,1.29
+2024-05-19,Burnley,Nottingham Forest,home,1.21
+2024-05-19,Nottingham Forest,Burnley,away,1.78
+2024-05-19,AFC Bournemouth,Chelsea,away,2.22
+2024-05-19,Chelsea,AFC Bournemouth,home,1.14
+2024-05-19,Aston Villa,Crystal Palace,away,1.02
+2024-05-19,Crystal Palace,Aston Villa,home,2.54
+2024-05-19,Liverpool,Wolverhampton Wanderers,home,4.74
+2024-05-19,Wolverhampton Wanderers,Liverpool,away,0.50
+2024-05-19,Fulham,Luton Town,away,1.09
+2024-05-19,Luton Town,Fulham,home,2.10
+2024-05-19,Manchester City,West Ham United,home,2.04
+2024-05-19,West Ham United,Manchester City,away,0.36
+2024-05-19,Sheffield United,Tottenham Hotspur,home,0.98
+2024-05-19,Tottenham Hotspur,Sheffield United,away,3.16
