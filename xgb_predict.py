@@ -4,11 +4,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
 # 1. 데이터 로딩 및 전처리
-df = pd.read_csv('EPL_2000_2025.csv')
+df = pd.read_csv('EPL_2019_2025.csv')
 df['MatchDate'] = pd.to_datetime(df['MatchDate'])
 df = df[df['MatchDate'].dt.year >= 2021]  # 최근 3시즌만 사용
 
-# 사용할 피처 목록
+#사용할 피처 목록
 features = [
     'HomeElo', 'AwayElo', 'elo_diff',
     'Form3Home', 'Form5Home', 'Form3Away', 'Form5Away',
