@@ -3,19 +3,19 @@ from soccerdata import Understat
 from typing import List, Optional
 
 def merge_understat_xg(
-    csv_path: str,
-    save_path: Optional[str] = None,
+    df: pd.DataFrame,
     seasons: List[int] = [2021, 2022, 2023, 2024],
-    league: str = "ENG-Premier League"
+    league: str = "ENG-Premier League",
+    save_path: Optional[str] = None
 ) -> pd.DataFrame:
     """
-    기존 CSV 파일과 Understat xG 데이터를 병합하고 파생 변수 생성.
+    기존 DataFrame과 Understat xG 데이터를 병합하고 파생 변수 생성.
 
     Parameters:
-        csv_path (str): 기존 경기 데이터 CSV 경로
-        save_path (Optional[str]): 저장할 경로 (None이면 저장하지 않음)
+        df (pd.DataFrame): 기존 경기 데이터프레임 (MatchDate, HomeTeam, AwayTeam 포함)
         seasons (List[int]): 가져올 시즌 목록
-        league (str): Understat에서 사용할 리그 코드 (기본: EPL)
+        league (str): Understat에서 사용할 리그 코드
+        save_path (Optional[str]): 저장할 경로 (None이면 저장하지 않음)
 
     Returns:
         pd.DataFrame: xG 데이터가 병합된 결과
@@ -33,16 +33,14 @@ def merge_understat_xg(
     })
     xg_df['MatchDate'] = pd.to_datetime(xg_df['MatchDate']).dt.date
 
-    # 2. 기존 CSV 로드
-    df = pd.read_csv(csv_path)
+    # 2. 입력 데이터 전처리
+    df = df.copy()
     df['MatchDate'] = pd.to_datetime(df['MatchDate']).dt.date
 
-    # 만약 원본 CSV에 xg가 없다면 빈 컬럼 추가
     for col in ['h_xg', 'a_xg']:
         if col not in df.columns:
             df[col] = None
-        
-    # 3. 팀 이름 매핑 (필요시 수정)
+
     team_name_map = {
         'Man United': 'Manchester United',
         'Spurs': 'Tottenham',
@@ -59,19 +57,18 @@ def merge_understat_xg(
         'QPR': 'Queens Park Rangers',
         'Blackpool': 'Blackpool',
         'Stoke': 'Stoke City',
-        # 필요한 경우 추가 가능
     }
     df['HomeTeam'] = df['HomeTeam'].replace(team_name_map)
     df['AwayTeam'] = df['AwayTeam'].replace(team_name_map)
 
-    # 4. 병합
+    # 3. 병합
     df = pd.merge(df, xg_df, on=['MatchDate', 'HomeTeam', 'AwayTeam'], how='left')
 
-    # 5. 새 xG로 덮어쓰기
+    # 4. 새 xG로 덮어쓰기
     df['h_xg'] = df['h_xg_y']
     df['a_xg'] = df['a_xg_y']
 
-    # 6. 파생 변수 생성
+    # 5. 파생 변수
     df['xG_diff'] = df['h_xg'] - df['a_xg']
     df['xg_margin'] = df['xG_diff'].abs()
     df['xg_ratio'] = df['h_xg'] / (df['a_xg'] + 1e-6)
@@ -80,30 +77,12 @@ def merge_understat_xg(
     df['rolling_xg_home_5'] = df.groupby('HomeTeam')['h_xg'].transform(lambda x: x.rolling(5, min_periods=1).mean())
     df['rolling_xg_away_5'] = df.groupby('AwayTeam')['a_xg'].transform(lambda x: x.rolling(5, min_periods=1).mean())
 
-    # 7. 중복 컬럼 제거
-    df.drop(columns=['h_xg_x', 'a_xg_x', 'h_xg_y', 'a_xg_y'], inplace=True)
+    # 6. 불필요한 컬럼 제거
+    df.drop(columns=['h_xg_x', 'a_xg_x', 'h_xg_y', 'a_xg_y'], errors='ignore', inplace=True)
 
-    # 8. 저장 또는 반환
+    # 7. 저장
     if save_path:
         df.to_csv(save_path, index=False)
         print(f"✅ 저장 완료: {save_path} (행 수: {len(df)})")
 
     return df
-
-"""
-사용 예시
-
-1. 병합 실행 + 저장
-df_updated = merge_understat_xg(
-    csv_path='EPL_2000_2025.csv',
-    save_path='EPL_2021_2024_xg_updated.csv',
-    seasons=[2021, 2022, 2023, 2024, 2025]
-)
-
-"""
-
-# df_updated = merge_understat_xg(
-#     csv_path='EPL_2000_2025.csv',
-#     save_path='EPL_2021_2024_xg_updated_1.csv',
-#     seasons=[2021, 2022, 2023, 2024, 2025]
-# )
