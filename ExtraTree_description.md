@@ -41,4 +41,7 @@
     - UnderStat 사이트에서 정보를 얻어온다.    
     <a href="https://understat.com/league/EPL/2023">사이트 링크</a>
 
-
+- data_final
+    - 전처리 직전의 데이터로 모든 feature를 보유한 파일
+        - 표준화 필요한 columns : ['HomeElo', 'AwayElo', 'GF3Home', 'GA3Home', 'GF5Home', 'GA5Home', 'GF3Away', 'GA3Away', 'GF5Away', 'GA5Away']
+        - encoding 필요한 columns : ['HomeTeam', 'AwayTeam']
