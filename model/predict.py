@@ -4,10 +4,10 @@ from get_model_input import get_model_input
 from datetime import datetime
 
 # 사용자 입력
-home_team = "Liverpool"
-away_team = "Everton"
-match_date = "2024-10-26"                               # 예시 날짜, 실제로는 사용자 입력으로 받거나 자동으로 설정
-# match_date = datetime.today().strftime("%Y-%m-%d")    # 오늘 날짜로 예측하는 경우
+home_team = "Everton"
+away_team = "Liverpool"
+# match_date = "2024-10-26"                           # 예시 날짜, 실제로는 사용자 입력으로 받거나 자동으로 설정
+match_date = datetime.today().strftime("%Y-%m-%d")    # 오늘 날짜로 예측하는 경우
 
 # 날짜 파싱 및 모드 구분
 match_date_parsed = pd.to_datetime(match_date).date()
@@ -28,7 +28,7 @@ prediction = model.predict(sample)[0]
 probs = model.predict_proba(sample)[0]
 
 # 출력
-print(f"\n🎯 예측 결과: {'홈승' if prediction == 1 else '무/원정승'}")
+print(f"\n🎯 예측 결과: {'홈승' if prediction == 1 else '무승부/원정승'}")
 print("📊 예측 확률:")
 print(f"   홈승: {probs[1]:.2%}")
-print(f"   무/원정승: {probs[0]:.2%}")
+print(f"   무승부/원정승: {probs[0]:.2%}")

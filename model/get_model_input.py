@@ -50,14 +50,6 @@ def get_model_input(home_team: str, away_team: str, match_date: str = None) -> d
     elo_change_home = home_elo - prev_elo_data.loc[home_team, "elo"]
     elo_change_away = away_elo - prev_elo_data.loc[away_team, "elo"]
 
-    # print("Elo 데이터 인덱스 샘플:", elo_data.index[:10])
-    # print("전체 인덱스:", elo_data.index.tolist())
-
-
-    # --- 날짜 파생 피처 ---
-    month = match_date.month
-    weekday = match_date.weekday()
-
     # --- Understat xG (match-level) ---
     understat = Understat(leagues="ENG-Premier League", seasons=[2021, 2022, 2023, 2024, 2025])
     xg_df = understat.read_team_match_stats()
@@ -104,7 +96,6 @@ def get_model_input(home_team: str, away_team: str, match_date: str = None) -> d
     Form3Away = calculate_form(team_results_away, away_team, 3)
     Form5Away = calculate_form(team_results_away, away_team, 5)
 
-
     # 반환
     return {
         "HomeElo": home_elo,
@@ -123,14 +114,5 @@ def get_model_input(home_team: str, away_team: str, match_date: str = None) -> d
         "xg_ratio": xg_ratio,
         "rolling_xg_home_5": rolling_xg_home_5,
         "rolling_xg_away_5": rolling_xg_away_5,
-        "month": month,
-        "weekday": weekday,
-        "prob_home": np.nan,   # 추후 api-football로 채울 예정 혹은 삭제
-        "prob_draw": np.nan,
-        "prob_away": np.nan
     }
-
-# if __name__ == "__main__":
-#     features = get_model_input("Everton", "Liverpool", "2024-11-26")
-#     print(pd.DataFrame([features]).T.sort_index())
     
