@@ -11,19 +11,36 @@
 
 ### 주요 피처 그룹
 
-| 범주         | 주요 피처 |
-|--------------|------------|
-| 경기 정보     | `MatchDate`, `month`, `weekday` |
-| 팀 이름       | `HomeTeam`, `AwayTeam` |
-| 팀 전력       | `HomeElo`, `AwayElo`, `elo_diff`, `elo_change_home`, `elo_change_away` |
-| 최근 폼       | `Form3Home`, `Form5Home`, `Form3Away`, `Form5Away` |
-| 사전 확률     | `prob_home`, `prob_draw`, `prob_away` |
-| xG 관련 지표 | `h_xg`, `a_xg`, `xG_diff`, `xg_margin`, `xg_ratio`, `rolling_xg_home_5`, `rolling_xg_away_5` |
-| 결과         | `result`: 2=홈승, 1=원정승, 0=무승부 |
+| 컬럼명                    | 설명                                                              |
+| ------------------------ | ---------------------------------------------------------------- |
+| **MatchDate**            | 경기 날짜 (예: `2000-07-28`)                                      |
+| **HomeTeam**             | 홈 팀 이름                                                        |
+| **AwayTeam**             | 원정 팀 이름                                                      |
+| **HomeElo**              | 경기 시점에서의 홈 팀 Elo 점수 (실력 지표)                          |
+| **AwayElo**              | 경기 시점에서의 원정 팀 Elo 점수                                   |
+| **elo\_diff**            | 홈 팀과 원정 팀의 Elo 점수 차이 (HomeElo - AwayElo)                |
+| **Form3Home**            | 홈 팀의 최근 3경기 폼                                              |
+| **Form5Home**            | 홈 팀의 최근 5경기 폼                                             |
+| **Form3Away**            | 원정 팀의 최근 3경기 폼                                           |
+| **Form5Away**            | 원정 팀의 최근 5경기 폼                                           |
+| **prob\_home**           | 경기 전 예측된 홈 팀 승리 확률                                     |
+| **prob\_draw**           | 무승부 확률                                                      |
+| **prob\_away**           | 원정 팀 승리 확률                                                |
+| **h\_xg**                | 홈 팀의 기대 득점 (Expected Goals)                               |
+| **a\_xg**                | 원정 팀의 기대 득점                                              |
+| **xG\_diff**             | 홈 팀 기대 득점 - 원정 팀 기대 득점 (`h_xg - a_xg`)               |
+| **xg\_margin**           | 절댓값 기반의 xG 차이 (예: `abs(h_xg - a_xg)`)                    |
+| **xg\_ratio**            | 홈 팀 기대 득점 비율 (`h_xg / (h_xg + a_xg)`), 두 팀의 전체 기대 득점 중 홈 팀의 비율 |
+| **month**                | 경기 월 (숫자, 예: `7` = 7월)                                    |
+| **weekday**              | 요일 (숫자: 월=0, 화=1, …, 일=6 또는 어떤 기준인지 확인 필요)      |
+| **result**               | 실제 경기 결과 (0 = 무승부, 1 = 원정 승, 2 = 홈 승 등으로 추정)    |
+| **rolling\_xg\_home\_5** | 홈 팀의 최근 5경기 평균 xG (롤링 평균)                            |
+| **elo\_change\_home**    | 직전 경기 이후 홈 팀의 Elo 점수 변화량                            |
+| **rolling\_xg\_away\_5** | 원정 팀의 최근 5경기 평균 xG (롤링 평균)                          |
+| **elo\_change\_away**    | 직전 경기 이후 원정 팀의 Elo 점수 변화량                          |
+
 
 > 시즌 초 경기에는 xG, 폼 등 결측치가 다수 존재
-
----
 
 ## 2. 모델 코드 요약 (`xgb_predict.py`)
 
@@ -73,8 +90,6 @@ weighted avg       0.74      0.74      0.74       130
 🧱 **Confusion Matrix**:
  [[49 14]
  [20 47]]
-
----
 
 ## 전체 요약
 
