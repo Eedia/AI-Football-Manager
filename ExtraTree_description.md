@@ -9,7 +9,7 @@
 ## 학습 모델
 - ExtraTreesClassifier : feature 수는 많고 데이터 수는 적을 때 과적합 방지에 용이한 모델
 
-    - model_final.pkl : 학습 완료된 모델
+    - model_final.pkl : 학습 완료된 모델 파일
 
 
 <Br>
