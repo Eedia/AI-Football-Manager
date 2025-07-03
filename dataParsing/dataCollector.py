@@ -109,6 +109,7 @@ class DataCollector:
         elo_away = self.get_team_elo(away_team, match_date)
 
         data = {
+            "MatchDate": match_date.date(),
             "HomeTeam": home_team,
             "AwayTeam": away_team,
             "GF3Home": gf3h,
