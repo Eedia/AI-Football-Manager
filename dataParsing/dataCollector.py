@@ -1,34 +1,25 @@
 import pandas as pd
 import soccerdata as sd
 
-class DataCollector: 
+class DataCollector:
     def __init__(self):
         self.fbref = sd.FBref(
             leagues="ENG-Premier League",
-            seasons="2425",  # 2024-2025 시즌
+            seasons="2425",
             no_cache=True
         )
         self.clubelo = sd.ClubElo()
+        self.schedule_df = self.fbref.read_schedule().reset_index()
+        self.elo_by_date_cache = {}
+        self.elo_team_history_cache = {}
+
         self.team_name_map = {
-            "Arsenal": "Arsenal",
-            "Aston Villa": "Aston Villa",
-            "Bournemouth": "Bournemouth",
-            "Brentford": "Brentford",
-            "Brighton": "Brighton",
-            "Chelsea": "Chelsea",
-            "Crystal Palace": "Crystal Palace",
-            "Everton": "Everton",
-            "Fulham": "Fulham",
-            "Leeds United": "Leeds United",
-            "Liverpool": "Liverpool",
-            "Man City": "Man City",
-            "Man Utd": "Man Utd",
-            "Newcastle": "Newcastle",
-            "Nottingham Forest": "Nottingham Forest",
-            "Southampton": "Southampton",
-            "Spurs": "Spurs",
-            "West Ham": "West Ham",
-            "Wolves": "Wolves"
+            "Arsenal": "Arsenal", "Aston Villa": "Aston Villa", "Bournemouth": "Bournemouth",
+            "Brentford": "Brentford", "Brighton": "Brighton", "Chelsea": "Chelsea",
+            "Crystal Palace": "Crystal Palace", "Everton": "Everton", "Fulham": "Fulham",
+            "Leeds United": "Leeds United", "Liverpool": "Liverpool", "Man City": "Man City",
+            "Man Utd": "Man Utd", "Newcastle": "Newcastle", "Nottingham Forest": "Nottingham Forest",
+            "Southampton": "Southampton", "Spurs": "Spurs", "West Ham": "West Ham", "Wolves": "Wolves"
         }
 
     def get_team_elo(self, team_alias, match_date):
@@ -36,28 +27,55 @@ class DataCollector:
         match_date = pd.to_datetime(match_date)
         day_before = match_date - pd.Timedelta(days=1)
 
-        try:
-            df = self.clubelo.read_by_date(date=day_before).reset_index()
-        except Exception as e:
-            print(f"Elo 데이터 로딩 실패: {e}")
-            return None
+        if day_before not in self.elo_by_date_cache:
+            try:
+                df = self.clubelo.read_by_date(date=day_before).reset_index()
+                self.elo_by_date_cache[day_before] = df
+            except Exception as e:
+                print(f"Elo 데이터 로딩 실패: {e}")
+                return None
 
+        df = self.elo_by_date_cache[day_before]
         filtered = df[df["team"].str.lower() == official_name.lower()]
         if filtered.empty:
             print(f"Elo 데이터 없음: {official_name} on {day_before.date()}")
             return None
         return filtered.iloc[0]["elo"]
 
-    def get_last_n_matches_goal_diff(self, team_name, n):
-        sched = self.fbref.read_schedule().reset_index()
-        team_lower = team_name.lower()
+    def get_team_elo_change(self, team_alias, match_date):
+        official_name = self.team_name_map.get(team_alias, team_alias)
+        match_date = pd.to_datetime(match_date)
 
-        mask = sched["home_team"].str.lower().str.contains(team_lower, na=False) \
-            | sched["away_team"].str.lower().str.contains(team_lower, na=False)
+        if official_name not in self.elo_team_history_cache:
+            try:
+                df = self.clubelo.read_team_history(official_name).reset_index()
+                df["from"] = pd.to_datetime(df["from"])
+                self.elo_team_history_cache[official_name] = df
+            except Exception as e:
+                print(f"Elo 데이터 로딩 실패: {e}")
+                return None
+
+        df = self.elo_team_history_cache[official_name]
+        df_before = df[df["from"] < match_date].sort_values("from")
+        if len(df_before) < 2:
+            print(f"{official_name} elo가 2개 미만입니다.")
+            return 0
+
+        elo_now = df_before.iloc[-1]["elo"]
+        elo_prev = df_before.iloc[-2]["elo"]
+        return elo_now - elo_prev
+
+    def get_last_n_matches_goal_diff(self, team_name, n, match_date):
+        sched = self.schedule_df
+        team_lower = team_name.lower()
+        sched = sched.copy()
+        sched["date"] = pd.to_datetime(sched["date"])
+        sched = sched[sched["date"] < match_date]
+
+        mask = sched["home_team"].str.lower().str.contains(team_lower, na=False) | \
+               sched["away_team"].str.lower().str.contains(team_lower, na=False)
         tm = sched.loc[mask].copy()
 
-        tm["date"] = pd.to_datetime(tm["date"])
-        tm = tm.sort_values("date")
         tm["score"] = tm["score"].str.replace("–", "-", regex=False)
         tm = tm[tm["score"].str.contains(r"\d+\s*-\s*\d+", na=False)].copy()
 
@@ -65,7 +83,7 @@ class DataCollector:
         tm["home_goals"] = pd.to_numeric(goals[0], errors="coerce")
         tm["away_goals"] = pd.to_numeric(goals[1], errors="coerce")
 
-        last_n = tm.tail(n)
+        last_n = tm.sort_values("date").tail(n)
         if last_n.empty:
             return pd.DataFrame()
 
@@ -92,8 +110,7 @@ class DataCollector:
         match_date = pd.to_datetime(match_date)
 
         def get_stats(team, n):
-            df = self.get_last_n_matches_goal_diff(team, 20)
-            df = df[df["date"] < match_date.date()]
+            df = self.get_last_n_matches_goal_diff(team, 20, match_date)
             df = df.sort_values("date").tail(n)
             gf = df["goals_for"].sum()
             ga = df["goals_against"].sum()
@@ -108,24 +125,19 @@ class DataCollector:
         elo_home = self.get_team_elo(home_team, match_date)
         elo_away = self.get_team_elo(away_team, match_date)
 
+        elo_diff = elo_home - elo_away if elo_home is not None and elo_away is not None else None
+        elo_change_home = self.get_team_elo_change(home_team, match_date)
+        elo_change_away = self.get_team_elo_change(away_team, match_date)
+
         data = {
             "MatchDate": match_date.date(),
             "HomeTeam": home_team,
             "AwayTeam": away_team,
-            "GF3Home": gf3h,
-            "GA3Home": ga3h,
-            "GF5Home": gf5h,
-            "GA5Home": ga5h,
-            "GF3Away": gf3a,
-            "GA3Away": ga3a,
-            "GF5Away": gf5a,
-            "GA5Away": ga5a,
-            "Form3Home": form3h,
-            "Form5Home": form5h,
-            "Form3Away": form3a,
-            "Form5Away": form5a,
-            "HomeElo": elo_home,
-            "AwayElo": elo_away
+            "GF3Home": gf3h, "GA3Home": ga3h, "GF5Home": gf5h, "GA5Home": ga5h,
+            "GF3Away": gf3a, "GA3Away": ga3a, "GF5Away": gf5a, "GA5Away": ga5a,
+            "Form3Home": form3h, "Form5Home": form5h, "Form3Away": form3a, "Form5Away": form5a,
+            "HomeElo": elo_home, "AwayElo": elo_away, "elo_diff": elo_diff,
+            "elo_change_home": elo_change_home, "elo_change_away": elo_change_away
         }
 
         return pd.DataFrame([data])
