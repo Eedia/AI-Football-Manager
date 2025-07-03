@@ -2,6 +2,7 @@ import pandas as pd
 import xgboost as xgb
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+import joblib
 
 # 1. 데이터 로딩 및 전처리
 df = pd.read_csv('EPL_2019_2025.csv')
@@ -51,3 +52,6 @@ cm = confusion_matrix(y_test, y_pred)
 print("🎯 Accuracy:", acc)
 print("\n📋 Classification Report:\n", report)
 print("\n🧱 Confusion Matrix:\n", cm)
+
+# 5. 모델 저장
+joblib.dump(model, 'xgb_model.pkl')
