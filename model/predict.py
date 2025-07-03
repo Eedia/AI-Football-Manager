@@ -4,9 +4,9 @@ from get_model_input import get_model_input
 from datetime import datetime
 
 # 사용자 입력
-home_team = "Everton"
-away_team = "Liverpool"
-match_date = "2024-11-26"                               # 예시 날짜, 실제로는 사용자 입력으로 받거나 자동으로 설정
+home_team = "Liverpool"
+away_team = "Everton"
+match_date = "2024-10-26"                               # 예시 날짜, 실제로는 사용자 입력으로 받거나 자동으로 설정
 # match_date = datetime.today().strftime("%Y-%m-%d")    # 오늘 날짜로 예측하는 경우
 
 # 날짜 파싱 및 모드 구분
