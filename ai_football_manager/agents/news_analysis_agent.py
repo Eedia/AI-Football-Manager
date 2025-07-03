@@ -2,7 +2,7 @@
 
 from openai import OpenAI
 from config import OPENAI_API_KEY
-from utils import prompt_templates
+from utils import prompt_templates, token_manager
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 
@@ -41,7 +41,7 @@ def analyze_news(user_query: str, chat_history: list) -> str:
 
     # 토큰 관리 - 비용
     # 이전 대화 기록에서 필요한 맥락 추출
-    # messages = token_manager.manage_history_tokens(chat_history, max_tokens=4000)
+    messages = token_manager.manage_history_tokens(chat_history, max_tokens=4000)
 
     # NEWS_ANALYSIS_SYSTEM_PROMPT 추가해야함
     messages.insert(0, {"role": "system", "content": prompt_templates.NEWS_ANALYSIS_SYSTEM_PROMPT})
@@ -109,8 +109,8 @@ def analyze_news(user_query: str, chat_history: list) -> str:
                                     f"각 기사별 요약, 감정, 코멘트, 링크를 포함하여 뉴스 브리핑처럼 구성해주세요."}
     ]
 
-    # 답변 생성전에 토큰 관리 -> 일단 나중에
+    final_messages = token_manager.manage_history_tokens(final_messages, max_tokens=4000)
 
     final_answer = _generate_response(final_messages, stream=True)
     
-    return final_answer       
+    return final_answer
