@@ -1,6 +1,6 @@
 import joblib
 import pandas as pd
-from model.get_model_input import get_model_input
+from get_model_input import get_model_input
 
 # 사용자 입력
 home_team = "Liverpool"
@@ -8,7 +8,7 @@ away_team = "Everton"
 match_date = "2024-11-26"
 
 # 모델 로드
-model = joblib.load("xgb_model_1.pkl")
+model = joblib.load("xgb_model.pkl")
 
 # 학습에 사용된 피처 순서
 feature_order = model.feature_names_in_.tolist()
