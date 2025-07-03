@@ -75,22 +75,22 @@
 #### 5. 모델 평가 결과
 
 ```text
-🎯 Accuracy: 0.7384615384615385
+🎯 Accuracy: 0.7378640776699029
 
 📋 Classification Report:
                precision    recall  f1-score   support
 
-           0       0.71      0.78      0.74        63
-           1       0.77      0.70      0.73        67
+           0       0.78      0.77      0.78       122
+           1       0.67      0.69      0.68        84
 
-    accuracy                           0.74       130
-   macro avg       0.74      0.74      0.74       130
-weighted avg       0.74      0.74      0.74       130
+    accuracy                           0.74       206
+   macro avg       0.73      0.73      0.73       206
+weighted avg       0.74      0.74      0.74       206
 
 
 🧱 Confusion Matrix:
- [[49 14]
- [20 47]]
+ [[94 28]
+ [26 58]]
 ```
 
 ### 예측 모델 요약
