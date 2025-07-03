@@ -13,14 +13,14 @@ def _call_for_classifcation(messages: list) -> str:
         response = client.chat.complications.create(
             model='gpt-4.1',
             messages=messages,
-            temperature=0.0     # 정확성 우선
+            temperature=0.0,     # 정확성 우선
             max_tokens=50       # 분류 결과는 짧게
         )
         return response.choices[0].message.content.strip()
     
     except Exception as e:
         print(f'분류 중 오류 발생: {e}')
-        return "ERROR_CLASSIFICATION_FAILED'
+        return "ERROR_CLASSIFICATION_FAILED"
 
 def route_query(user_query: str, chat_history: list) -> str:
     # 최종 답변을 받아 반환하는 메인 라우팅 함수
@@ -35,7 +35,7 @@ def route_query(user_query: str, chat_history: list) -> str:
     print(f"질문 분류 중: '{user_query}'") 
     classification_result = _call_for_classifcation(classification_messages)
 
-    if classification_result == "ERROR_CLASSIFICATION_FAILED" OR classification_result not in ["TEAM_PLAYER","NEWS_ANALYSIS","PREDICTION","GENERAL"]:
+    if classification_result == "ERROR_CLASSIFICATION_FAILED" or classification_result not in ["TEAM_PLAYER","NEWS_ANALYSIS","PREDICTION","GENERAL"]:
         return "질문의 의도를 정확히 파악하기 어렵습니다. 다시 질문해주세요."
     
     # 분류 결과에 따라 적절한 전문 에이전트에게 위임
