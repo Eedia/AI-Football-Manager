@@ -1,0 +1,24 @@
+{
+  "HomeElo": "경기 시점에서의 홈 팀 Elo 점수 (실력 지표)",
+  "AwayElo": "경기 시점에서의 원정 팀 Elo 점수",
+  "elo_diff": "홈 팀과 원정 팀의 Elo 점수 차이 (HomeElo - AwayElo)",
+  "Form3Home": "홈 팀의 최근 3경기 성적을 수치화한 폼 지표",
+  "Form5Home": "홈 팀의 최근 5경기 성적을 수치화한 폼 지표",
+  "Form3Away": "원정 팀의 최근 3경기 성적을 수치화한 폼 지표",
+  "Form5Away": "원정 팀의 최근 5경기 성적을 수치화한 폼 지표",
+  "prob_home": "경기 전 예측된 홈 팀 승리 확률 (예: 0.55)",
+  "prob_draw": "경기 전 예측된 무승부 확률",
+  "prob_away": "경기 전 예측된 원정 팀 승리 확률",
+  "h_xg": "홈 팀의 기대 득점 (Expected Goals)",
+  "a_xg": "원정 팀의 기대 득점 (Expected Goals)",
+  "xG_diff": "홈 팀 기대 득점 - 원정 팀 기대 득점 (h_xg - a_xg)",
+  "xg_margin": "홈-원정 팀의 xG 절댓값 차이 (abs(h_xg - a_xg))",
+  "xg_ratio": "홈 팀 기대 득점 비율 (h_xg / (h_xg + a_xg))",
+  "rolling_xg_home_5": "홈 팀의 최근 5경기 평균 기대 득점 (롤링 평균)",
+  "rolling_xg_away_5": "원정 팀의 최근 5경기 평균 기대 득점 (롤링 평균)",
+  "elo_change_home": "직전 경기 이후 홈 팀의 Elo 점수 변화량",
+  "elo_change_away": "직전 경기 이후 원정 팀의 Elo 점수 변화량",
+  "month": "경기 월 (숫자, 예: 7 = 7월)",
+  "weekday": "경기 요일 (0 = 월요일, 1 = 화요일, ..., 6 = 일요일)"
+}
+
