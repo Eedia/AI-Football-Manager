@@ -1,0 +1,21 @@
+import requests
+
+def fetch_fixtures_by_team(team_id, season="2025", league_id="39"):
+    url = "https://api-football-v1.p.rapidapi.com/v3/fixtures"
+    headers = {
+        "X-RapidAPI-Key": "cccab2a5e4mshc1a78002172c341p18d071jsn2ea11b39cc02",  # 여기에 본인의 API 키 입력
+        "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com"
+    }
+    params = {
+        "team": team_id,
+        "season": season,
+        "league": league_id
+    }
+
+    response = requests.get(url, headers=headers, params=params)
+    
+    if response.status_code == 200:
+        return response.json()
+    else:
+        print("설명하기 어려워요 ㅠㅠ:", response.status_code)
+        return None
