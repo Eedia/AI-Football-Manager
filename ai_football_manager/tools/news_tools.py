@@ -8,7 +8,7 @@ client = OpenAI(api_key=OPENAI_API_KEY)
 def extract_search_query(user_input: str) -> str:
 	# 사용자 입력에서 뉴스 검색을 위한 핵심 키워드(선수명, 팀명, 리그명)를 추출
 
-	response = client.chat.complications.create(
+	response = client.chat.completions.create(
 		model="gpt-4o",
 		messages=[{
 					"role": "system",
@@ -26,7 +26,7 @@ def extract_search_query(user_input: str) -> str:
 				},
 				{"role": "user", "content": user_input}
 		],
-		temperature=0.0    # 분류 -> 정확성 우선
+		temperature=0.0,    # 분류 -> 정확성 우선
 		max_tokens=20	   # 짧은 키워드만 필요
 	)
 	return response.choices[0].message.content.strip()
@@ -65,7 +65,7 @@ def summarize_article(title: str, description: str) -> str:
 	설명: {description}
 	"""
 
-	response = client.chat.complications.create(
+	response = client.chat.completions.create(
 		model="gpt-4o",
 		messages=[{"role": "system", "content": "너는 유능한 축구 기자야. 간결하게 요약해."},
 				  {"role": "user", "content": prompt}
@@ -80,7 +80,7 @@ def sentiment_analysis(summary: str) -> str:
 
 	prompt = f"아래 뉴스 요약이 축구팬에게 긍정, 부정, 중립 중 무엇인지 한 단어로만 답해줘.\n\n{summary}"
 
-	response = client.chat.complications.create(
+	response = client.chat.completions.create(
 		model="gpt-4o",
 		messages=[{"role": "user", "content": prompt}],
 		max_tokens=10,
@@ -91,7 +91,7 @@ def sentiment_analysis(summary: str) -> str:
 def comment_text(summary: str) -> str:
 	# 해외축구 뉴스 요약에 대해 축구팬 입장에서 한줄 코멘트를 남김
 	prompt = "아래는 해외축구 뉴스 요약이야. 축구팬 입장에서 한줄 코멘트를 남겨줘. \n\n{summary}"
-	response = client.chat.complications.create(
+	response = client.chat.completions.create(
 		model="gpt-4o",
 		messages=[{"role": "user", "content": prompt}],
 		max_tokens=50

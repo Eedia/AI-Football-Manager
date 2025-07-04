@@ -3,6 +3,7 @@
 from openai import OpenAI
 from config import OPENAI_API_KEY
 from utils import prompt_templates, token_manager
+from tools import news_tools
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 
@@ -11,28 +12,23 @@ def _generate_response(messages: list, stream: bool = True) -> str:
 
     try:
         if stream:
-            response_stream = client.chat.complications.create(
+            return client.chat.completions.create(
                 model="gpt-4o",
                 messages=messages,
                 stream=True
             )
-
-            full_response = ""
-            for chunk in response_stream:
-                full_response += (chunk.choices[0].delt.content or "")
-            return full_response
         
         else:
-            response = client.chat.complications.create(
-                model='gpt-4o'
+            response = client.chat.completions.create(
+                model='gpt-4o',
                 messages=messages,
                 max_tokens=500
             )
             return response.choices[0].message.content.strip()
 
-        except Exception as e:
-            print(f"응답 생성 중 오류 발생: {e}")
-            return "뉴스 분석 중 문제가 발생했습니다. 잠시 후 다시 시도해주세요."
+    except Exception as e:
+        print(f"응답 생성 중 오류 발생: {e}")
+        return "뉴스 분석 중 문제가 발생했습니다. 잠시 후 다시 시도해주세요."
 
 
 def analyze_news(user_query: str, chat_history: list) -> str:
@@ -103,11 +99,10 @@ def analyze_news(user_query: str, chat_history: list) -> str:
 
     final_messages = [
         {"role": "system", "content": prompt_templates.NEWS_ANALYSIS_SYSTEM_PROMPT},
-        {"role": "user", "content": f"사용자 질문: {user_query}\n\n"
-                                    f"다음은 검색된 최신 축구 뉴스 요약 및 분석 결과입니다:\n{analyze_text}\n\n"
-                                    f"이 내용을 바탕으로 사용자 질문에 대해 종합적인 답변을 제공해주세요. "                                }
-                                    f"각 기사별 요약, 감정, 코멘트, 링크를 포함하여 뉴스 브리핑처럼 구성해주세요."}
-    ]
+        {"role": "user", "content": f"""사용자 질문: {user_query}\n\n
+                                        다음은 검색된 최신 축구 뉴스 요약 및 분석 결과입니다:\n{analyze_text}\n\n
+                                        이 내용을 바탕으로 사용자 질문에 대해 종합적인 답변을 제공해주세요.                                
+                                        각 기사별 요약, 감정, 코멘트, 링크를 포함하여 뉴스 브리핑처럼 구성해주세요."""}]
 
     final_messages = token_manager.manage_history_tokens(final_messages, max_tokens=4000)
 
