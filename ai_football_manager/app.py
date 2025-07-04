@@ -1,30 +1,19 @@
 import streamlit as st
-import functions.api_call as api
-import json
+from types import GeneratorType
+from agents import router_agent
+
 
 def init_session_state():
     st.session_state.setdefault('openai_model', 'gpt-4.1')
     st.session_state.setdefault('messages', [])
-    st.session_state.setdefault('current_menu', "menu1") # 추후 내용 변경
 
 def main():
     init_session_state()
     st.header('AI Football Manager')
+    st.image('./ai_football_manager/images/soccer.jpg')
     
-    st.sidebar.title("메뉴")
-    selected_menu = st.sidebar.radio(
-        "원하는 메뉴를 선택하세요:",
-        ("menu1", "menu2", "menu3") # 추후 내용 변경
-    )
-    
-    st.markdown(f'현재 메뉴는 "**{st.session_state.current_menu}**"입니다. 무엇이 궁금하신가요?')
-
-    if st.session_state.current_menu != selected_menu:    
-        st.session_state.current_menu = selected_menu
-        if st.session_state.current_menu == "menu1" or st.session_state.current_menu == "menu2":
-            st.session_state.openai_model = 'gpt-4o'
-        st.session_state.messages = []
-        st.rerun()
+    with st.chat_message(name="assistant", avatar="assistant"):
+        st.markdown("무엇이 궁금하신가요?")
 
     for msg in st.session_state.messages:
         with st.chat_message(name=msg['role'], avatar=msg['role']):
@@ -41,25 +30,27 @@ def main():
             st.markdown(prompt)
 
         with st.chat_message(name="assistant", avatar="assistant"):
-            messages= [{"role": m['role'], "content": m['content']} for m in st.session_state.messages]
+            current_chat_history = [{"role": m['role'], "content": m['content']} for m in st.session_state.messages]
             
-            if st.session_state.openai_model == 'gpt-4o':
-                stream = api.web_search_4o(messages)
-            else:
-                stream = api.openai_call(messages)
-            
-            # 스트리밍 응답 처리 (타이핑 효과)
             message_placeholder = st.empty()
             full_response = ""
             
-            if stream:
-                for chunk in stream:
-                    delta = chunk.choices[0].delta
-                    if hasattr(delta, "content") and delta.content:
-                        full_response += (chunk.choices[0].delta.content or "")
-                        message_placeholder.markdown(full_response + "▌")
+            with st.spinner("생각 중입니다..."):
+                response_stream_from_agent = router_agent.route_query(prompt, current_chat_history)
+
+                if isinstance(response_stream_from_agent, GeneratorType):
+                    for chunk in response_stream_from_agent:
+                        if chunk and chunk.choices and chunk.choices[0].delta:
+                            delta = chunk.choices[0].delta
+                            if hasattr(delta, "content") and delta.content:
+                                full_response += (chunk.choices[0].delta.content or "")
+                                message_placeholder.markdown(full_response + "▌")
                 
-                message_placeholder.markdown(full_response)
+                    message_placeholder.markdown(full_response)
+
+                else:
+                    full_response = response_stream_from_agent
+                    message_placeholder.markdown(full_response)
 
                 st.session_state.messages.append({
                     "role": "assistant",
