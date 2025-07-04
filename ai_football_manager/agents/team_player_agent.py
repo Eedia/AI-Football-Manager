@@ -19,7 +19,7 @@ def _generate_response(messages: list, stream: bool = True) -> str:
         
         else:
             response = client.chat.completions.create(
-                model='gpt-4.1',
+                model='gpt-4o',
                 messages=messages,
                 max_tokens=500
             )
