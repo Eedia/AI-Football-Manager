@@ -29,9 +29,9 @@
 | **전력 지표**      | `HomeElo`, `AwayElo`, `elo_diff`, `MaxHome`                                                                                                                                  | 팀 기본 실력(Elo)·시장 기대치(배당)·실력차 |
 | **폼(최근 성적)**   | `Form3Home`, `Form5Home`, `Form3Away`, `Form5Away`                                                                                                                           | 최근 승점 수로 팀의 추세 파악              |
 | **득 · 실점 추세**  | `GF3Home`, `GA3Home`, `GF5Home`, `GA5Home`,<br>`GF3Away`, `GA3Away`, `GF5Away`, `GA5Away`                                                                                    | 최근 경기에서 홈팀과 원정팀이 넣은 score 수            |
-| **xG 지표**      | `home_xg_l3`, `home_xg_l5`, `away_xg_l3`, `away_xg_l5`,<br>`xg_l3_diff`, `xg_l5_diff`                                                                                        | 기대 득점 수준 & 양팀 비교            |
+| **xG 지표**      | `home_xg_l3`, `home_xg_l5`, `away_xg_l3`, `away_xg_l5`,<br>`xg_l3_diff`, `xg_l5_diff`                                                                                        | xG(Expected Goals), 기대 득점 수준 & 양팀 비교            |
 | **압박(수비 스타일)** | `home_ppda_l3`, `home_ppda_l5`, `away_ppda_l3`, `away_ppda_l5`,<br>`ppda_l3_diff`, `ppda_l5_diff`                                                                            | PPDA(Pass Allowed Per Defensive Action) : 공격 팀이 시행한 총 패스 횟수, PPDA로 압박 강도 확인              |
-| **위협 지역 침투**   | `home_deep_completions_l3`, `home_deep_completions_l5`,<br>`away_deep_completions_l3`, `away_deep_completions_l5`,<br>`deep_completions_l3_diff`, `deep_completions_l5_diff` | deep completion : 크로그가 아닌 패스로, 박스권 안으로 연결되는 패스 횟수              |
+| **위협 지역 침투**   | `home_deep_completions_l3`, `home_deep_completions_l5`,<br>`away_deep_completions_l3`, `away_deep_completions_l5`,<br>`deep_completions_l3_diff`, `deep_completions_l5_diff` | deep completion : 크로스가 아닌 패스로, 박스권 안으로 연결되는 패스 횟수              |
 | **타깃 변수**      | `FTResult`                                                                                                                                                                   | 레이블(H:0, A:1),  H-홈팀 승리, A-원정팀 승리               |
 
 
