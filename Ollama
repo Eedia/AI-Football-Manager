@@ -1,0 +1,76 @@
+#해외축구승부예측+OLLAMA 챗구조
+import streamlit as st
+import ollama
+
+st.set_page_config(page_title="⚽ 축구 승부 예측 챗봇")
+
+st.title("⚽ 축구 승부 예측 챗봇")
+
+# 예시 데이터 (여러 개도 가능)
+match_data = {
+    "Liverpool vs Tottenham": {
+        "home_team": "Liverpool",
+        "away_team": "Tottenham Hotspur",
+        "home_form": "승-승-무-패-승",
+        "away_form": "패-패-무-승-패",
+        "home_rank": 2,
+        "away_rank": 6,
+        "home_avg_goals": 2.1,
+        "away_avg_goals": 1.2,
+        "location": "Anfield, Liverpool"
+    }
+}
+
+# 채팅 이력 초기화
+if "history" not in st.session_state:
+    st.session_state["history"] = []
+
+# 이전 메시지 출력
+for msg in st.session_state["history"]:
+    with st.chat_message(msg["role"]):
+        st.write(msg["content"])
+
+# 입력 받기
+prompt = st.chat_input("예: Liverpool vs Tottenham 결과는?")
+if prompt:
+    # 사용자 메시지
+    with st.chat_message("user"):
+        st.write(prompt)
+    st.session_state["history"].append({
+        "role": "user",
+        "content": prompt
+    })
+
+    # 경기 데이터가 있으면 context 추가
+    context = ""
+    for key in match_data:
+        if key.lower() in prompt.lower():
+            info = match_data[key]
+            context = (
+                f"경기 정보:\n"
+                f"- 홈팀: {info['home_team']} (최근 성적: {info['home_form']}, 평균 득점: {info['home_avg_goals']}, 순위: {info['home_rank']})\n"
+                f"- 원정팀: {info['away_team']} (최근 성적: {info['away_form']}, 평균 득점: {info['away_avg_goals']}, 순위: {info['away_rank']})\n"
+                f"장소: {info['location']}\n\n"
+                f"위의 정보를 바탕으로 경기 결과를 예측해줘. 이유도 설명해줘."
+            )
+            st.session_state["history"].append({
+                "role": "system",
+                "content": context
+            })
+            break
+
+    # 모델 응답
+    response = ollama.chat(
+        model="gemma:2b",  # 설치된 모델명에 따라 변경 가능
+        messages=st.session_state["history"]
+    )
+
+    # 응답 출력
+    with st.chat_message("assistant"):
+        st.write(response["message"]["content"])
+
+    # 응답 저장
+    st.session_state["history"].append({
+        "role": "assistant",
+        "content": response["message"]["content"]
+    })
