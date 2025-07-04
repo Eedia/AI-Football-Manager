@@ -1,8 +1,6 @@
-import json
-
 def format_api_data_for_llm(api_data: dict, entity_type: str) -> str:
     
-    if not api_dat:
+    if not api_data:
         return ""
     
     formatted_string = ""
@@ -10,11 +8,11 @@ def format_api_data_for_llm(api_data: dict, entity_type: str) -> str:
     if entity_type == "player":
         name = api_data.get("name", "알 수 없음")
         firstname = api_data.get("firstname", "")
-        lastname = api.data.get("lastname", "")
+        lastname = api_data.get("lastname", "")
         age = api_data.get("age", "알 수 없음")
         nationality = api_data.get("nationality", "알 수 없음")
 
-        formatted_string += f"선수 이름: {firstname}{lasname}({name})\n"
+        formatted_string += f"선수 이름: {firstname} {lastname}({name})\n"
         formatted_string += f"나이: {age}\n"
         formatted_string += f"국적: {nationality}\n\n"
 
@@ -36,7 +34,7 @@ def format_api_data_for_llm(api_data: dict, entity_type: str) -> str:
     elif entity_type == "team":
         team_name = api_data.get("team_name", "알 수 없음")
         league_name = api_data.get("league_name", "알 수 없음")
-        season = api.data.get("season", "알 수 없음")
+        season = api_data.get("season", "알 수 없음")
         
         formatted_string_string += f"팀 이름: {team_name}\n"
         formatted_string_string += f"리그: {league_name} ({season} 시즌)\n\n"
