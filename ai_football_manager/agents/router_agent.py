@@ -1,17 +1,20 @@
 from openai import OpenAI
 from config import OPENAI_API_KEY
-from utils import prompt_templates
+from utils import prompt_templates, token_manager
+
+from agents import news_analysis_agent
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 
 # print 관련 문은 실행 확인을 위해 사용
 
+model_name = 'gpt-4.1'
 
 def _call_for_classifcation(messages: list) -> str:
     # 메시지를 보내 질문 분류 결과를 받아오는 내부함수
     try:
-        response = client.chat.complications.create(
-            model='gpt-4.1',
+        response = client.chat.completions.create(
+            model=model_name,
             messages=messages,
             temperature=0.0,     # 정확성 우선
             max_tokens=50       # 분류 결과는 짧게
@@ -30,7 +33,10 @@ def route_query(user_query: str, chat_history: list) -> str:
         {"role": "user", "content": user_query}
     ]
 
-    # 토큰 관리 유틸리티를 추가하면 비용절감 가능 -> 일단 나중에
+    # 분류용 메시지 토큰 최적화
+    classification_messages = token_manager.manage_history_tokens(
+        classification_messages, max_tokens=1000, for_classification=True
+    )
 
     print(f"질문 분류 중: '{user_query}'") 
     classification_result = _call_for_classifcation(classification_messages)
@@ -47,7 +53,7 @@ def route_query(user_query: str, chat_history: list) -> str:
 
     elif classification_result == "NEWS_ANALYSIS":
         print("-> 뉴스/분석 정보 에이전트 호출")
-        # finial_response = news_analysis_agent.analyze_news(user_query, chat_history)
+        finial_response = news_analysis_agent.analyze_news(user_query, chat_history)
     
     elif classification_result == "PREDICTION":
         print("-> 승부 예측 에이전트 호출")
@@ -59,6 +65,7 @@ def route_query(user_query: str, chat_history: list) -> str:
             {"role": "system", "content": prompt_templates.GENERAL_SYSTEM_PROMPT},
             {"role": "user", "content": user_query}
         ]
+        general_messages = token_manager.manage_history_tokens(general_messages, max_tokens=2000, model_name=model_name)
         finial_response = _call_for_classifcation(general_messages)
         if finial_response == "ERROR_CLASSIFICATION_FAILED":
             finial_response = "현재 질문에 답변하기 어렵습니다."
