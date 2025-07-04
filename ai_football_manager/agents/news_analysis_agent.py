@@ -1,32 +1,36 @@
 # print 함수는 확인용으로 사용
 
-from openai import OpenAI
-from config import OPENAI_API_KEY
-from utils import prompt_templates, token_manager
-from tools import news_tools
+from openai import OpenAI   # OpenAI API와 통신하기 위한 클래스
+from config import OPENAI_API_KEY   # API 키를 안전하게 저장하는 모듈
+from utils import prompt_templates, token_manager    # 프롬프트 템플릿과 토큰 관리를 위한 유틸 모듈
+from tools import news_tools  # 뉴스 데이터를 가져오고 처리하기 위한 도구 모듈
 
-client = OpenAI(api_key=OPENAI_API_KEY)
+client = OpenAI(api_key=OPENAI_API_KEY) # OpenAI 클라이언트를 생성합니다.
 
 def _generate_response(messages: list, stream: bool = True) -> str:
-    # 메시지를 보내 응답을 생성하는 내부함수
+    # OpenAI의 chat completions API를 호출하여 응답을 생성하는 함수입니다.
 
     try:
+        #함수 내부에서 try 블록을 사용하여 예외에 대비합니다
         if stream:
+            # 스트리밍 모드인 경우, 스트리밍 응답 제네레이터를 반환합니다.
             return client.chat.completions.create(
-                model="gpt-4o",
-                messages=messages,
-                stream=True
+                model="gpt-4o",    # 모델 이름 설정
+                messages=messages, # 메시지 리스트 전달
+                stream=True        # 스트리밍 모드 활성화
             )
         
         else:
+            # 스트리밍이 아니라면, 동기식 호출을 진행합니다
             response = client.chat.completions.create(
-                model='gpt-4o',
-                messages=messages,
-                max_tokens=500
+                model='gpt-4o',    # 모델 이름 설정
+                messages=messages, # 메시지 리스트 전달
+                max_tokens=500     # 최대 토큰 수 지정
             )
             return response.choices[0].message.content.strip()
-
+# 첫번째 응답 메시지의 내용을 추출 후, 양쪽 공백을 제거하여 반환합니다.
     except Exception as e:
+         # 예외 발생 시 에러 메시지를 출력하고 예외를 재발생시킵니다.
         print(f"응답 생성 중 오류 발생: {e}")
         return "뉴스 분석 중 문제가 발생했습니다. 잠시 후 다시 시도해주세요."
 
@@ -64,20 +68,21 @@ def analyze_news(user_query: str, chat_history: list) -> str:
 
         # 뉴스 요약 (축구 관련 기사만 요약)
         summary = news_tools.summarize_article(title, description)
-
+        
+         # 요약문이 공백이 아닌 경우에 한해 추가 분석 실행
         if summary.strip():
             sentiment = news_tools.sentiment_analysis(summary)
             comment = news_tools.comment_text(summary)
-
+          # 결과 딕셔너리를 생성하여 analyze_articles 리스트에 추가
             analyze_articles.append({
-                "index": i + 1,
+                "index": i + 1,   # 0부터 시작하는 인덱스를 1부터 시작하도록 변환
                 "title": title,
                 "summary": summary,
                 "url": url,
                 "sentiment": sentiment,
                 "comment": comment
             })
-
+        # 테스트를 위한 예시 코드 (실제 실행 시 필요에 따라 articles 리스트 구성)
         if len(analyze_articles) >= 3:    #최소 3개 이상의 유의미한 기사를 모으면 중단
             break
     
@@ -107,5 +112,6 @@ def analyze_news(user_query: str, chat_history: list) -> str:
     final_messages = token_manager.manage_history_tokens(final_messages, max_tokens=4000)
 
     final_answer = _generate_response(final_messages, stream=True)
-    
+     
+    # 기사들을 처리하여 분석 결과를 출력
     return final_answer
