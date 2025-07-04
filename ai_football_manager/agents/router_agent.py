@@ -2,7 +2,7 @@ from openai import OpenAI
 from config import OPENAI_API_KEY
 from utils import prompt_templates, token_manager
 
-from agents import news_analysis_agent
+from agents import team_player_agent, news_analysis_agent, prediction_agent
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 
@@ -49,7 +49,7 @@ def route_query(user_query: str, chat_history: list) -> str:
     
     if classification_result == "TEAM_PLAYER":
         print("-> 팀/선수 정보 에이전트 호출")
-        # finial_response = team_player_agent.get_team_player_info(user_query, chat_history)
+        finial_response = team_player_agent.get_team_player_info(user_query, chat_history)
 
     elif classification_result == "NEWS_ANALYSIS":
         print("-> 뉴스/분석 정보 에이전트 호출")
@@ -57,7 +57,7 @@ def route_query(user_query: str, chat_history: list) -> str:
     
     elif classification_result == "PREDICTION":
         print("-> 승부 예측 에이전트 호출")
-        # finial_response = prediction_agent.predict_match(user_query, chat_history)
+        finial_response = prediction_agent.predict_match(user_query, chat_history)
     
     elif classification_result == "GENERAL":
         print("-> 일반 응답 처리")
