@@ -1,7 +1,7 @@
 from openai import OpenAI
 from config import OPENAI_API_KEY
 from utils import prompt_templates, token_manager
-from agents import news_analysis_agent, prediction_agent # team_player_agent도 여기에 있다고 가정
+from agents import news_analysis_agent, prediction_agent, team_player_agent #도 여기에 있다고 가정
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 
@@ -16,8 +16,7 @@ def get_team_player_info_tool(query: str, chat_history: list):
     사용자가 특정 팀, 선수, 그들의 통계, 또는 이들과 관련된 일반적인 정보를 요청할 때 이 도구를 사용.
     """
     print("-> 팀/선수 정보 에이전트 호출 (Function Call)")
-    # return team_player_agent.get_team_player_info(query, chat_history) # team_player_agent 구현 시 주석 해제
-    return "팀/선수 정보 에이전트가 호출되었습니다. (현재 구현되지 않음)"
+    return team_player_agent.get_team_player_info(query, chat_history) # team_player_agent 구현 시 주석 해제
 
 def analyze_news_tool(query: str, chat_history: list):
     """
