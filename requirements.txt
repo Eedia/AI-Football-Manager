@@ -4,3 +4,7 @@ openai
 scikit-learn
 pandas
 matplotlib
+tiktokenrequests  
+python-dateutil  
+soccerdata  
+joblib 
