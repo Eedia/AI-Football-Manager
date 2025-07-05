@@ -12,11 +12,12 @@ def _generate_response(messages: list, stream: bool = True) -> str:
     try:
         if stream:
             return client.chat.completions.create(
-                model="gpt-4o",
+                model='gpt-4o',
                 messages=messages,
-                stream=True
+                stream=True,
+                temperature=1.2
             )
-        
+
         else:
             response = client.chat.completions.create(
                 model='gpt-4o',
@@ -32,21 +33,14 @@ def _generate_response(messages: list, stream: bool = True) -> str:
 def get_team_player_info(user_query: str, chat_history: list) -> str:
     # 사용자의 축구 팀 또는 선수 정보 관련 질문을 처리하고 답변을 반환
 
-    messages = token_manager.manage_history_tokens(chat_history, max_tokens=4000)
-    messages.insert(0, {"role": "system", "content": prompt_templates.TEAM_PLAYER_SYSTEM_PROMPT})
-    messages.append({"role": "user", "content": user_query})
-
     extraction_prompt = f"""
     사용자의 질문에서 축구 선수 또는 팀의 이름과 관련 시즌(연도)을 JSON형식으로 추출해.
     질문이 선수에 대한 것이라면 "type": "player", 팀에 대한 것이라면 "type": "team"으로 지정해.
-    이름은 정확하게 추출하고, 시즌 정보가 없다면 "season": null,로, type을 알 수 없으면 "type": "unknown"으로 해.
+    정보가 없다면 null로 처리해.
     예시:
-    - "손흥민 최근 골 기록은?" => {{"type": "player", "name": "Son Heung-min", "season": null}}
-    - "첼시 이번 시즌 리그 순위" => {{"type": "team", "name": "Chelsea", "season": null}}
-    - "2022년 홀란드 득점왕이었어?" => {{"type": "player", "name": "Erling Haaland", "season": 2022}}
-    - "맨체스터 시티 2023년 성적 알려줘" => {{"type": "team", "name": "Manchester City", "season": 2023}}
-    - "오늘 날씨 어때?" => {{"type": "unknown", "name": null, "season": null}}
-
+    - "손흥민 최근 골 기록은?" => {{"type": "player", "name": "Son Heung-min", "team": null, "season": null}}
+    - "토트넘의 손흥민 2023-2024 시즌 기록" => {{"type": "player", "name": "Son Heung-min", "team": "Tottenham", "season": 2023}}
+    - "맨체스터 시티 2023년 성적 알려줘" => {{"type": "team", "name": "Manchester City", "team": null, "season": 2023}}
     사용자 질문: {user_query}
     """
 
@@ -56,12 +50,18 @@ def get_team_player_info(user_query: str, chat_history: list) -> str:
     ]
 
     extracted_info_json = _generate_response(extraction_messages, stream=False)
+    if '```' in extracted_info_json:
+        start_index = extracted_info_json.find('{')
+        end_index = extracted_info_json.find('}')
+        if start_index != -1 and end_index != -1:
+            extracted_info_json = extracted_info_json[start_index:end_index+1]
 
     try:
         extracted_info = json.loads(extracted_info_json)
         entity_type = extracted_info.get("type")
         name = extracted_info.get("name")
         season = extracted_info.get("season")
+        team_name = extracted_info.get("team")
     except json.JSONDecodeError:
         print(f"LLM이 생성한 JSON 파싱 실패: {extracted_info_json}")
         entity_type = "unknown"
@@ -73,8 +73,9 @@ def get_team_player_info(user_query: str, chat_history: list) -> str:
     
     raw_api_data = {}
     if entity_type == "player":
-        print(f"선수 통계 조회: {name}, 시즌: {season}")
-        raw_api_data = sports_data_api.get_player_stats(name, season)
+        print(f"선수 통계 조회: {name}, 팀: {team_name}, 시즌: {season}")
+        raw_api_data = sports_data_api.get_player_stats(name, season, team_name)
+    
     elif entity_type == "team":
         print(f"팀 통계 조회: {name}, 시즌: {season}")
         raw_api_data = sports_data_api.get_team_stats(name, season)
@@ -98,5 +99,5 @@ def get_team_player_info(user_query: str, chat_history: list) -> str:
     final_messages = token_manager.manage_history_tokens(final_messages, max_tokens=4000)
 
     final_answer = _generate_response(final_messages, stream=True)
-     
+    
     return final_answer
