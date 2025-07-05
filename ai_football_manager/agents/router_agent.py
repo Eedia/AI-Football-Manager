@@ -13,7 +13,7 @@ model_name = 'gpt-4.1'
 def get_team_player_info_tool(query: str, chat_history: list):
     """
     축구 팀이나 선수에 대한 정보를 검색합니다.
-    사용자가 특정 팀, 선수, 그들의 통계, 또는 이들과 관련된 일반적인 정보를 요청할 때 이 도구를 사용하십시오.
+    사용자가 특정 팀, 선수, 그들의 통계, 또는 이들과 관련된 일반적인 정보를 요청할 때 이 도구를 사용.
     """
     print("-> 팀/선수 정보 에이전트 호출 (Function Call)")
     # return team_player_agent.get_team_player_info(query, chat_history) # team_player_agent 구현 시 주석 해제
@@ -22,7 +22,7 @@ def get_team_player_info_tool(query: str, chat_history: list):
 def analyze_news_tool(query: str, chat_history: list):
     """
     축구 뉴스를 분석하고 통찰력을 제공합니다.
-    사용자가 최신 축구 이벤트에 대한 뉴스 분석, 요약 또는 의견을 요청할 때 이 도구를 사용하십시오.
+    사용자가 최신 축구 이벤트에 대한 뉴스 분석, 요약 또는 의견을 요청할 때 이 도구를 사용.
     """
     print("-> 뉴스/분석 정보 에이전트 호출 (Function Call)")
     return news_analysis_agent.analyze_news(query, chat_history)
@@ -30,7 +30,7 @@ def analyze_news_tool(query: str, chat_history: list):
 def predict_match_tool(query: str, chat_history: list):
     """
     축구 경기의 결과를 예측합니다.
-    사용자가 경기 예측, 점수, 또는 승률을 요청할 때 이 도구를 사용하십시오.
+    사용자가 경기 예측, 점수, 또는 승률을 요청할 때 이 도구를 사용.
     """
     print("-> 승부 예측 에이전트 호출 (Function Call)")
     return prediction_agent.predict_match(query, chat_history)
@@ -38,7 +38,7 @@ def predict_match_tool(query: str, chat_history: list):
 def handle_general_query_tool(query: str, chat_history: list):
     """
     다른 범주에 속하지 않는 일반적인 축구 관련 질문을 처리합니다.
-    특정 데이터 검색이나 분석이 필요 없는 일반적인 대화나 질문에 이 도구를 사용하십시오.
+    특정 데이터 검색이나 분석이 필요 없는 일반적인 대화나 질문에 이 도구를 사용.
     """
     print("-> 일반 응답 처리 (Function Call)")
     general_messages = [
@@ -147,7 +147,7 @@ tools = [
                     "chat_history": {
                         "type": "array",
                         "description": "현재 채팅 기록.",
-                        "items": { # 이 부분이 추가되어야 합니다.
+                        "items": {
                             "type": "object",
                             "properties": {
                                 "role": {"type": "string", "enum": ["user", "assistant"]},
@@ -162,6 +162,7 @@ tools = [
         },
     },
 ]
+
 # 도구 이름을 실제 파이썬 함수에 매핑
 available_functions = {
     "get_team_player_info_tool": get_team_player_info_tool,
@@ -228,13 +229,12 @@ def route_query(user_query: str, chat_history: list) -> str:
         # 도구 호출이 감지되면 실행
         if tool_calls:
             print(f"[DEBUG] 도구 호출 감지: {tool_calls}")
-            # 이 라우팅 함수에서는 단순화를 위해 하나의 도구 호출만 가정합니다.
-            # 더 복잡한 시나리오에서는 여러 도구 호출을 반복 처리할 수 있습니다.
+            # 도구 호출이 있는 경우, 첫 번째 도구 호출을 처리
             tool_call = tool_calls[0]
             function_name = tool_call["function"]["name"]
             function_args = {}
             try:
-                # 인자를 문자열로 받으므로 주의 깊게 파싱
+                # 도구 호출 인자를 JSON으로 디코딩
                 import json
                 function_args = json.loads(tool_call["function"]["arguments"])
             except json.JSONDecodeError as e:
@@ -243,14 +243,14 @@ def route_query(user_query: str, chat_history: list) -> str:
 
             if function_name in available_functions:
                 # 추출된 인자와 함께 도구 함수 실행
-                # 도구 정의에 필요한 user_query와 chat_history를 전달합니다.
+                # 도구 정의에 필요한 user_query와 chat_history를 전달
                 print(f"도구 실행 중: {function_name} with args: {function_args}")
                 
                 # 도구가 'query'와 'chat_history'와 같은 특정 인자를 요구하고,
-                # 모델이 이를 도구 호출 인자로 직접 제공하는 경우, 해당 인자를 사용합니다.
-                # 그렇지 않은 경우, 라우팅 컨텍스트의 user_query와 chat_history를 기본값으로 사용합니다.
+                # 모델이 이를 도구 호출 인자로 직접 제공하는 경우, 해당 인자를 사용
+                # 그렇지 않은 경우, 라우팅 컨텍스트의 user_query와 chat_history를 기본값으로 사용.
                 
-                # 가장 안전한 방법은 컨텍스트 변수를 명시적으로 전달하는 것입니다.
+                # 가장 안전한 방법은 컨텍스트 변수를 명시적으로 전달하는 것
                 final_answer = available_functions[function_name](user_query, chat_history)
                 return final_answer
             else:
