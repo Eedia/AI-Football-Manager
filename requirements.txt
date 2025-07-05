@@ -1,10 +1,11 @@
 streamlit
-dotenv
+python-dotenv
 openai
 scikit-learn
 pandas
 matplotlib
-tiktokenrequests  
-python-dateutil  
-soccerdata  
-joblib 
+tiktoken
+requests
+python-dateutil
+soccerdata
+joblib
