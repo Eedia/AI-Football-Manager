@@ -53,7 +53,7 @@ def get_match_prediction(user_input: str):
         )
 
         # print(f"[DEBUG] 수집된 데이터: {df_final}")
-        df_final.to_csv("collected_features.csv", index=False)  # 디버깅용 CSV 저장
+        # df_final.to_csv("collected_features.csv", index=False)  # 디버깅용 CSV 저장
         # 4. 모델 예측
         result_df = predict_match_result(df_final)
         
