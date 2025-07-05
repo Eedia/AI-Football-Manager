@@ -2,7 +2,7 @@ from openai import OpenAI
 from config import OPENAI_API_KEY
 from utils import prompt_templates, token_manager
 
-from agents import news_analysis_agent
+from agents import news_analysis_agent, prediction_agent
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 
@@ -12,6 +12,8 @@ model_name = 'gpt-4.1'
 
 def _call_for_classifcation(messages: list) -> str:
     # 메시지를 보내 질문 분류 결과를 받아오는 내부함수
+    valid_categories = ["TEAM_PLAYER", "NEWS_ANALYSIS", "PREDICTION", "GENERAL"]
+
     try:
         response = client.chat.completions.create(
             model=model_name,
@@ -19,7 +21,13 @@ def _call_for_classifcation(messages: list) -> str:
             temperature=0.0,     # 정확성 우선
             max_tokens=50       # 분류 결과는 짧게
         )
-        return response.choices[0].message.content.strip()
+        # 응답에서 분류 결과 추출
+        result = response.choices[0].message.content.strip().upper()
+
+        # 유효한 분류 중 하나가 포함되어 있다면 해당 카테고리만 반환
+        for category in valid_categories:
+            if category in result:
+                return category
     
     except Exception as e:
         print(f'분류 중 오류 발생: {e}')
@@ -41,9 +49,12 @@ def route_query(user_query: str, chat_history: list) -> str:
     print(f"질문 분류 중: '{user_query}'") 
     classification_result = _call_for_classifcation(classification_messages)
 
-    if classification_result == "ERROR_CLASSIFICATION_FAILED" or classification_result not in ["TEAM_PLAYER","NEWS_ANALYSIS","PREDICTION","GENERAL"]:
+    print(f"[DEBUG] 분류 결과: '{classification_result}'")
+
+    # 분류 실패 또는 유효하지 않은 분류 결과 처리
+    if classification_result == "ERROR_CLASSIFICATION_FAILED":
         return "질문의 의도를 정확히 파악하기 어렵습니다. 다시 질문해주세요."
-    
+        
     # 분류 결과에 따라 적절한 전문 에이전트에게 위임
     finial_response = ""
     
@@ -57,7 +68,7 @@ def route_query(user_query: str, chat_history: list) -> str:
     
     elif classification_result == "PREDICTION":
         print("-> 승부 예측 에이전트 호출")
-        # finial_response = prediction_agent.predict_match(user_query, chat_history)
+        finial_response = prediction_agent.predict_match(user_query, chat_history)
     
     elif classification_result == "GENERAL":
         print("-> 일반 응답 처리")
