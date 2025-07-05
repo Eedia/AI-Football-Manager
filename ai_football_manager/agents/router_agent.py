@@ -16,7 +16,7 @@ def get_team_player_info_tool(query: str, chat_history: list):
     사용자가 특정 팀, 선수, 그들의 통계, 또는 이들과 관련된 일반적인 정보를 요청할 때 이 도구를 사용.
     """
     print("-> 팀/선수 정보 에이전트 호출 (Function Call)")
-    return team_player_agent.get_team_player_info(query, chat_history) # team_player_agent 구현 시 주석 해제
+    return team_player_agent.get_team_player_info(query, chat_history) 
 
 def analyze_news_tool(query: str, chat_history: list):
     """
