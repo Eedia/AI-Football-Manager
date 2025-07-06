@@ -287,7 +287,7 @@ def route_query(user_query: str, chat_history: list) -> str:
 
         # 도구 호출이 감지되면 실행
         if tool_calls:
-            print(f"[DEBUG] 도구 호출 감지: {tool_calls}")
+            # print(f"[DEBUG] 도구 호출 감지: {tool_calls}")
             
             # 단일 도구 호출인 경우
             if len(tool_calls) == 1:
