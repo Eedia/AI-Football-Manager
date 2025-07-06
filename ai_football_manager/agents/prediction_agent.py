@@ -36,36 +36,41 @@ def predict_match(user_query: str, chat_history: list) -> str:
     
     try:
         # 1. 모델 기반 예측 수행
-        prediction_result = prediction_tools.get_match_prediction(user_query)
+        prediction_result = prediction_tools.get_match_prediction(user_query, chat_history)
         
         if prediction_result is None:
             return "경기 정보를 찾을 수 없습니다. 날짜와 팀명을 정확히 입력해주세요. (예: '2025년 5월 18일 아스널과 뉴캐슬 경기 예측해줘')"
         
-        # 2. AI 해설 생성을 위한 메시지 구성
-        messages = [
-            {"role": "system", "content": prompt_templates.PREDICTION_SYSTEM_PROMPT},
-            {"role": "user", "content": f"""
-                    사용자 질문: {user_query}
-
-                    경기 예측 결과:
-                    - 경기: {prediction_result['HomeTeam']} vs {prediction_result['AwayTeam']}
-                    - 경기 날짜: {prediction_result['MatchDate']}
-                    - 예측 결과: {prediction_result['Pred_Result']}
-                    - 원정팀 승리 확률: {prediction_result['AwayWin_Prob']:.1%}
-                    - 홈팀 승리 확률: {(1 - prediction_result['AwayWin_Prob']):.1%}
-
-                    추가 정보:
-                    - 홈팀 Elo: {prediction_result.get('HomeElo', 'N/A')}
-                    - 원정팀 Elo: {prediction_result.get('AwayElo', 'N/A')}
-                    - Elo 차이: {prediction_result.get('elo_diff', 'N/A')}
-
-                    위 데이터를 바탕으로 전문적이고 흥미로운 경기 예측 분석을 제공해주세요.
-                    예측 근거, 주의할 점, 경기 관전 포인트 등을 포함해주세요.
-            """
-            }
-        ]
+        # 2. chat_history를 기반으로 메시지 구성
+        messages = chat_history.copy() if chat_history else []
         
-        # 토큰 관리
+        # 시스템 메시지가 없으면 추가
+        if not messages or messages[0].get("role") != "system":
+            messages.insert(0, {"role": "system", "content": prompt_templates.PREDICTION_SYSTEM_PROMPT})
+        
+        # 예측 결과를 포함한 현재 질문 추가
+        detailed_query = f"""
+            사용자 질문: {user_query}
+
+            경기 예측 결과:
+            - 경기: {prediction_result['HomeTeam']} vs {prediction_result['AwayTeam']}
+            - 경기 날짜: {prediction_result['MatchDate']}
+            - 예측 결과: {prediction_result['Pred_Result']}
+            - 원정팀 승리 확률: {prediction_result['AwayWin_Prob']:.1%}
+            - 홈팀 승리 확률: {(1 - prediction_result['AwayWin_Prob']):.1%}
+
+            추가 정보:
+            - 홈팀 Elo: {prediction_result.get('HomeElo', 'N/A')}
+            - 원정팀 Elo: {prediction_result.get('AwayElo', 'N/A')}
+            - Elo 차이: {prediction_result.get('elo_diff', 'N/A')}
+
+            위 데이터를 바탕으로 전문적이고 흥미로운 경기 예측 분석을 제공해주세요.
+            예측 근거, 주의할 점, 경기 관전 포인트 등을 포함해주세요.
+        """
+        
+        messages.append({"role": "user", "content": detailed_query})
+        
+        # 토큰 관리로 대화 기록 조정
         messages = token_manager.manage_history_tokens(messages, max_tokens=4000)
         
         # 3. AI 해설 생성
