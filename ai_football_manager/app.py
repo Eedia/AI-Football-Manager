@@ -1,5 +1,5 @@
 import streamlit as st
-from types import GeneratorType
+from openai import Stream
 from agents import router_agent
 
 
@@ -38,7 +38,7 @@ def main():
             with st.spinner("생각 중입니다..."):
                 response_stream_from_agent = router_agent.route_query(prompt, current_chat_history)
 
-                if isinstance(response_stream_from_agent, GeneratorType):
+                if isinstance(response_stream_from_agent, Stream):
                     for chunk in response_stream_from_agent:
                         if chunk and chunk.choices and chunk.choices[0].delta:
                             delta = chunk.choices[0].delta
