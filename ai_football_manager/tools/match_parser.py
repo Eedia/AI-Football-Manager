@@ -77,6 +77,8 @@ def extract_match_parameters(user_input: str, chat_history: list) -> dict:
         # chat_history에서 가장 최근에 언급된 팀 찾기
         found_team = find_team_from_history(chat_history, team_kor_to_eng)
         print(f"[DEBUG] chat_history에서 찾은 팀: {found_team}")
+    else :
+        found_team = None
     
     # 2. 직접적인 팀명이 없으면 user_input에서 찾기
     if not found_team:
