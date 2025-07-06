@@ -36,9 +36,9 @@ def _generate_response(messages: list, stream: bool = True) -> str:
 
 
 def analyze_news(user_query: str, chat_history: list) -> str:
-    # 사용자의 축구 뉴스/분석 관련 질문을 처리하고 답변을 반환하는 메인 함수
-
-
+    '''
+    사용자의 축구 뉴스/분석 관련 질문을 처리하고 답변을 반환하는 메인 함수
+    '''
     # 토큰 관리 - 비용
     # 이전 대화 기록에서 필요한 맥락 추출
     messages = token_manager.manage_history_tokens(chat_history, max_tokens=4000)

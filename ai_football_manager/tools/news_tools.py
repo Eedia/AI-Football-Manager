@@ -19,6 +19,7 @@ def extract_search_query(user_input: str) -> str:
 						- '손흥민 근황 알려줘'라면 '손흥민'
 						- '토트넘 경기 일정 알려줘'라면 '토트넘'
 						- '프리미어리그 최신 소식'이라면 '프리미어리그'
+						- '맨유'는 '맨체스터 유나이티드'로 
 						라고만 반환해.
 
 						만약 축구와 관련 없는 질문이라면 'None'이라고 반환해.
@@ -44,6 +45,7 @@ def search_news(query: str, n: int = 5) -> list:
 		response = requests.get(url, timeout=10)
 		response.raise_for_status()    # HTTP 오류 발생시 예외 발생
 		data = response.json()
+		# print(f"[DEBUG] 뉴스 API 응답: {data}")  # 디버깅용 로그
 		return data.get("articles", [])
 	except requests.exceptions.RequestException as e:
 		print(f"뉴스 API 호출 중 오류 발생: {e}")
