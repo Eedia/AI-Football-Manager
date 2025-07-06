@@ -14,7 +14,7 @@ import os
 current_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(current_dir)
 
-def get_match_prediction(user_input: str):
+def get_match_prediction(user_input: str, chat_history: list = None) -> dict:
     """
     사용자 입력을 받아 경기 예측을 수행하는 함수
     
@@ -36,7 +36,7 @@ def get_match_prediction(user_input: str):
         from model_predictor import predict_match_result
         
         # 1. 사용자 입력에서 경기 정보 추출
-        params = extract_match_parameters(user_input)
+        params = extract_match_parameters(user_input, chat_history)
         # print(f"[DEBUG] 추출된 파라미터: {params}")
         
         # 파라미터 검증
