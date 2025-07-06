@@ -59,9 +59,6 @@ def main():
             with st.spinner("생각 중입니다..."):
                 response_stream_from_agent = router_agent.route_query(prompt, current_chat_history)
 
-                # 스트리밍인지 확인하는 코드였는데 
-                # if isinstance(response_stream_from_agent, GeneratorType): -> 이거로는 streamlit에서 스트리밍을 제대로 처리하지 못함
-                # 스트리밍 응답을 받는 경우와 비스트리밍 응답을 받는 경우를 구분하기 위해 openai.Stream 클래스를 사용 
                 if isinstance(response_stream_from_agent, openai.Stream): 
                     print("스트리밍 응답을 받는 중...")
                     for chunk in response_stream_from_agent:
