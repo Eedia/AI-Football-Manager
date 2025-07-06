@@ -36,18 +36,34 @@ def handle_general_query_tool(query: str, chat_history: list):
     """
     다른 범주에 속하지 않는 일반적인 축구 관련 질문을 처리합니다.
     특정 데이터 검색이나 분석이 필요 없는 일반적인 대화나 질문에 이 도구를 사용.
+    이전 대화 맥락을 고려하여 자연스러운 대화를 제공합니다.
     """
     print("-> 일반 응답 처리 (Function Call)")
-    general_messages = [
-        {"role": "system", "content": prompt_templates.GENERAL_SYSTEM_PROMPT},
-        {"role": "user", "content": query}
-    ]
-    response = client.chat.completions.create(
-        model=model_name,
-        messages=general_messages,
-        temperature=0.7
-    )
-    return response.choices[0].message.content.strip()
+    
+    # chat_history를 기반으로 메시지 구성
+    messages = chat_history.copy() if chat_history else []
+    
+    # 시스템 메시지가 없으면 추가
+    if not messages or messages[0].get("role") != "system":
+        messages.insert(0, {"role": "system", "content": prompt_templates.GENERAL_SYSTEM_PROMPT})
+    
+    # 현재 질문 추가
+    messages.append({"role": "user", "content": query})
+    
+    # 토큰 관리로 대화 기록 조정
+    messages = token_manager.manage_history_tokens(messages, max_tokens=3000)
+    
+    try:
+        response = client.chat.completions.create(
+            model=model_name,
+            messages=messages,
+            temperature=0.7
+        )
+        return response.choices[0].message.content.strip()
+    
+    except Exception as e:
+        print(f"일반 응답 생성 중 오류 발생: {e}")
+        return "죄송합니다. 응답 생성 중 문제가 발생했습니다. 다시 시도해주세요."
 
 # OpenAI API에 전달할 도구(Tool) 정의 목록
 tools = [
@@ -172,7 +188,7 @@ def integrate_multiple_results(user_query: str, tool_results: list, chat_history
     # 도구 결과들을 하나의 텍스트로 결합
     combined_results = "\n\n".join(tool_results)
 
-    print(combined_results)
+    # print(combined_results)
     
     integration_prompt = f"""
 사용자가 다음과 같이 질문했습니다: "{user_query}"
@@ -212,16 +228,26 @@ handle_general_query_tool이 호출되었다면, 일반적인 응답을 포함�
 
 def route_query(user_query: str, chat_history: list) -> str:
     # OpenAI 모델이 도구 사용 여부를 결정하도록 메시지 준비
-    messages = [
-        {"role": "system", "content": prompt_templates.ROUTER_SYSTEM_PROMPT},
-        {"role": "user", "content": user_query}
-    ]
-
-    # 전체 대화 턴에 대한 토큰 관리
+    # chat_history를 기반으로 메시지 구성
+    messages = chat_history.copy() if chat_history else []
+    
+    # 시스템 메시지가 없으면 추가
+    if not messages or messages[0].get("role") != "system":
+        messages.insert(0, {"role": "system", "content": prompt_templates.ROUTER_SYSTEM_PROMPT})
+    
+    # 현재 사용자 질문 추가
+    messages.append({"role": "user", "content": user_query})
+    
+    before_tokens = sum(token_manager.calculate_message_tokens(msg, model_name) for msg in messages)
+   
+    # 토큰 관리로 적절한 길이로 조정
     messages = token_manager.manage_history_tokens(
         messages, max_tokens=2000, model_name=model_name
     )
 
+    after_tokens = sum(token_manager.calculate_message_tokens(msg, model_name) for msg in messages)
+    print(f"[DEBUG] 메시지 토큰 수 조정: {before_tokens} -> {after_tokens}")
+    
     try:
         print("[DEBUG] 라우팅 시작")
         # 도구를 활성화하여 모델 호출
