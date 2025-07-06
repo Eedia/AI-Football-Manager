@@ -47,7 +47,7 @@ def get_fixture_info(api_key, match_date, team_name):
     return None
 
 
-def extract_match_parameters(user_input: str) -> dict:
+def extract_match_parameters(user_input: str, chat_history: list) -> dict:
     """
     사용자 입력에서 경기 날짜와 팀 정보를 파싱하고,
     API를 통해 홈/어웨이 팀을 확정하여 반환합니다.
@@ -68,12 +68,22 @@ def extract_match_parameters(user_input: str) -> dict:
     except Exception:
         return {"match_date": None, "home_team": None, "away_team": None}
 
-    # 팀 파싱 (첫 번째로 찾은 팀만 사용)
-    found_team = None
-    for kor, eng in team_kor_to_eng.items():
-        if kor in user_input:
-            found_team = eng
-            break # 첫 번째 팀을 찾으면 멈춤
+    # 1. 참조 표현 확인 ("그 팀", "그팀", "해당 팀" 등)
+    reference_keywords = ["그 팀", "그팀", "해당 팀", "그 클럽", "그클럽"]
+    has_reference = any(keyword in user_input for keyword in reference_keywords)
+    
+    if has_reference:
+        print("[DEBUG] 참조 표현 감지, chat_history에서 팀 검색 중...")
+        # chat_history에서 가장 최근에 언급된 팀 찾기
+        found_team = find_team_from_history(chat_history, team_kor_to_eng)
+        print(f"[DEBUG] chat_history에서 찾은 팀: {found_team}")
+    
+    # 2. 직접적인 팀명이 없으면 user_input에서 찾기
+    if not found_team:
+        for kor, eng in team_kor_to_eng.items():
+            if kor in user_input:
+                found_team = eng
+                break
     
     print(f"[DEBUG] 파싱된 날짜: {match_date}, 찾은 팀: {found_team}")
 
@@ -96,3 +106,28 @@ def extract_match_parameters(user_input: str) -> dict:
             "home_team": None,
             "away_team": None
         }
+    
+def find_team_from_history(chat_history: list, team_kor_to_eng: dict) -> str:
+    """
+    chat_history에서 가장 최근에 언급된 팀을 찾아 영문명으로 반환
+    """
+    if not chat_history:
+        return None
+    
+    # 역순으로 검색 (최신 대화부터)
+    for message in reversed(chat_history):
+        content = message.get("content", "")
+        if not content:
+            continue
+            
+        # 한국어 팀명 찾기
+        for kor_name, eng_name in team_kor_to_eng.items():
+            if kor_name in content:
+                print(f"[DEBUG] '{kor_name}' 팀을 chat_history에서 발견")
+                return eng_name
+        
+        # 영어 팀명도 찾기 (API 응답에서 나온 경우)
+        for eng_name in team_kor_to_eng.values():
+            if eng_name.lower() in content.lower():
+                print(f"[DEBUG] '{eng_name}' 팀을 chat_history에서 발견")
+                return eng_name
