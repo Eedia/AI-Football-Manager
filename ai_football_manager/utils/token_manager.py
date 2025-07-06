@@ -48,7 +48,8 @@ def manage_history_tokens(messages: list, max_tokens: int, model_name: str = "gp
     for i in range(len(chat_history_only) - 1, -1, -1):  # 마지막 메시지부터 역순으로
         msg = chat_history_only[i]
         # 각 메시지당 role, content 키 등에 사용되는 약 4토큰 추가
-        msg_tokens = get_token_count(msg["content"], model_name) + 4
+        # 수정 부분 공백에 대한 처리 추가 (None이나 빈 값 처리)
+        msg_tokens = get_token_count(msg.get("content", "") or "", model_name) + 4
 
         if current_tokens + msg_tokens <= available_chat_tokens:
             temp_messages.insert(0, msg)  # 최신 메시지를 앞에 추가

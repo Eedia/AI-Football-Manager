@@ -4,6 +4,7 @@ from config import OPENAI_API_KEY
 from openai import OpenAI
 import json
 
+
 client = OpenAI(api_key=OPENAI_API_KEY)
 
 def _generate_response(messages: list, stream: bool = True) -> str:
@@ -81,8 +82,15 @@ def get_team_player_info(user_query: str, chat_history: list) -> str:
         raw_api_data = sports_data_api.get_team_stats(name, season)
 
     if not raw_api_data:
-        return "죄송합니다. 요청하신 선수/팀에 대한 최신 정보를 API에서 찾을 수 없습니다."
-    
+        # API에서 데이터를 가져오지 못한 경우
+        # 대체로 웹 검색을 통해 정보를 제공
+        response = client.responses.create(
+            model='gpt-4o',
+            tools=[{"type": "web_search_preview"}],
+            input = user_query
+        )
+        return (response.output_text)
+
     parsed_info_for_llm = data_parser.format_api_data_for_llm(raw_api_data, entity_type)
 
     if not parsed_info_for_llm:

@@ -1,7 +1,32 @@
 import streamlit as st
-from openai import Stream
 from agents import router_agent
 
+import warnings
+import os
+import logging
+
+
+# 모든 경고 메시지 숨기기
+warnings.filterwarnings('ignore')
+os.environ['PYTHONWARNINGS'] = 'ignore'
+
+# 로깅 레벨을 ERROR로 설정하여 INFO, WARNING 메시지 차단
+logging.getLogger().setLevel(logging.ERROR)
+
+import streamlit as st
+from agents import router_agent
+import openai
+
+# soccerdata 관련 로깅 완전 차단
+for name in ['soccerdata', 'understat', 'pandas', 'sklearn', 'urllib3', 'requests']:
+    logging.getLogger(name).setLevel(logging.ERROR)
+    logging.getLogger(name).disabled = True
+
+# 모든 기존 로거들 차단
+for name in logging.root.manager.loggerDict:
+    if any(lib in name.lower() for lib in ['soccerdata', 'understat', 'pandas', 'sklearn']):
+        logging.getLogger(name).setLevel(logging.ERROR)
+        logging.getLogger(name).disabled = True
 
 def init_session_state():
     st.session_state.setdefault('openai_model', 'gpt-4.1')
@@ -38,7 +63,14 @@ def main():
             with st.spinner("생각 중입니다..."):
                 response_stream_from_agent = router_agent.route_query(prompt, current_chat_history)
 
-                if isinstance(response_stream_from_agent, Stream):
+
+                
+                # 스트리밍인지 확인하는 코드였는데 
+                # if isinstance(response_stream_from_agent, GeneratorType): -> 이거로는 streamlit에서 스트리밍을 제대로 처리하지 못함
+                # 스트리밍 응답을 받는 경우와 비스트리밍 응답을 받는 경우를 구분하기 위해 openai.Stream 클래스를 사용 
+                if isinstance(response_stream_from_agent, openai.Stream): 
+                    print("스트리밍 응답을 받는 중...")
+
                     for chunk in response_stream_from_agent:
                         if chunk and chunk.choices and chunk.choices[0].delta:
                             delta = chunk.choices[0].delta
@@ -49,6 +81,7 @@ def main():
                     message_placeholder.markdown(full_response)
 
                 else:
+                    print("비스트리밍 응답을 받는 중...")
                     full_response = response_stream_from_agent
                     message_placeholder.markdown(full_response)
 
